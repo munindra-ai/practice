@@ -6,7 +6,7 @@
 * Login & Register Page 
 *
 **/
-.auth-bg-pattern {
+/* .auth-bg-pattern {
     background-color: #ff7700;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
     background-attachment: fixed;
@@ -16,12 +16,16 @@
 input:-internal-autofill-selected {
     box-shadow: 000px 1000px #fff inset;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-}
+} */
 
-.product-card {
+
+.card{
+    padding-top: 20px;
 }
 .card-img-top {
-    padding-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 .card-body {
     padding-top: 30px;
@@ -42,6 +46,7 @@ input:-internal-autofill-selected {
     padding: 5px 15px;
     color: #fff;
     font-weight: 500;
+    align-items: center;
 }
 .btn:hover {
     background-color: #1b2430;
@@ -53,12 +58,12 @@ section {
 }
 
 section .container:hover {
-    box-shadow: 2px 5px 10px #888888;
+    box-shadow: 2px 5px 10px #e1dede;
     transition: 0.1s linear;
     cursor: pointer;
 }
 .container .py-5 {
-    background-color: #adc2a9;
+    background-color: #e3e6e334;
     height: 400px;
 }
 .py-5 {
@@ -96,12 +101,113 @@ section .container:hover {
 
 
 .calendar{
-    padding-left: 23%;
-    padding-top: 3%;
+    padding-left: 25%;
+    padding-top: 1%;
 }
 
 .converter{
-    
     padding-left: 25%;
     padding-top: 20%;
+}
+
+
+
+.counter-up{
+    margin-bottom: 5rem;
+    min-height: 50vh;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .counter-up::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #e3e6e378;
+  }
+  .counter-up .content{
+    z-index: 1;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .counter-up .content .box{
+    border: 2px dashed rgba(0, 0, 0, 0.84);
+    width: calc(25% - 30px);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .content .box .icon{
+    font-size: 48px;
+    color: #000000;
+  }
+  .content .box .counter{
+    font-size: 50px;
+    font-weight: 500;
+    color: #000000;
+    font-family: sans-serif;
+  }
+  .content .box .text{
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+  }
+  @media screen and (max-width: 1036px) {
+    .counter-up{
+      padding: 50px 50px 0 50px;
+    }
+    .counter-up .content .box{
+      width: calc(50% - 30px);
+      margin-bottom: 50px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    .counter-up .content .box{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .wrapper{
+      padding: 20px;
+    }
+    .counter-up{
+      padding: 30px 20px 0 20px;
+    }
+  }
+
+  .feature{
+    background-color: #e1dede;
+    align-items: center;
+    text-align: center;
+  }
+  
+.icon{
+    text-align: center;
+    font-size: 48px;
+}
+
+.para{
+    text-align: center;
+    font-size: 20px;
+}
+
+.text{
+    text-align: center;
+}
+button{
+    align-items: center;
+    text-align: center;
 }
