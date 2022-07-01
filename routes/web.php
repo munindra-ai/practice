@@ -1,8 +1,23 @@
 <?php
 
+use App\Events\SomeoneLoginAttempt;
+use App\Http\Controllers\LoginAlertController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MailController;
+use App\Service\RegisterService;
 use App\Http\Controllers\PaymentRegisterController;
+use App\Mail\LoginAlert;
+use App\Mail\WelcomeEmail;
+use App\Mail\WelcomeMail;
+use App\Notifications\LoginAlertNotification;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMarkDownMail;
+
 
 Route::get('/', 'FrontendController@index')->name('home');
 
@@ -45,12 +60,15 @@ Route::get('paypal/express-checkout/{order}', 'PaypalController@expressCheckout'
 Route::get('paypal/express-checkout-success', 'PaypalController@expressCheckoutSuccess')->name('paypal.express-checkout.success');
 Route::get('paypal/express-checkout-cancel', 'PaypalController@expressCheckoutCancel')->name('paypal.express-checkout.cancel');
 
-
 Route::get('dicount-card', 'DiscountCardController@index')->name('frontend.discount-card.index');
 
 // Orders route
 Route::get('orders', 'OrderController@index')->name('frontend.orders.index');
 Route::post('orders', 'OrderController@store')->name('frontend.orders.store');
+// //for new login and register
+Route::post('register',[RegisterController::class,'create'])->name('register');
+Route::get('success/{id}',[RegisterController::class,'registerSuccess'])->name('register.success');
+Route::get('cancel/{id}',[RegisterController::class,'cancelled'])->name('register.cancel');
 
 Route::get('my-reviews', 'MyReviewController')->name('frontend.my-reviews')->middleware('auth');
 
@@ -74,3 +92,21 @@ Route::get('cart-destroy', function () {
 Route::get('paypal-pay/{order}', 'PaymentController@pay')->name('paypal.pay');
 Route::get('paypal-success', 'PaymentController@success')->name('paypal.success');
 Route::get('paypal-cancelled', 'PaymentController@cancelled')->name('paypal.cancelled');
+
+// Route::get('/notification',function(){
+//     $user=User::inRandomOrder()->first();
+//     $user->notify(new LoginALertNotification());
+// });
+
+Route::get('/notification',function(){
+    $user=User::inRandomOrder()->first();
+    // event(new SomeoneLoginAttempt($user));
+    SomeoneLoginAttempt::dispatch($user);
+    echo $user->name;
+    // dispatch(function(){
+        // Mail::to("manindratamang4@gmail.com")
+        //     ->send(new SendMarkDownMail());
+    // })->delay(now()->addSecond(10));
+    echo "mail sent";
+
+});

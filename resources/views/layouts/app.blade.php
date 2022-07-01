@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{{ asset('assets/swiper/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/drift/drift-basic.min.css') }}">
 
-
     <script src="{{ mix('js/app.js') }}"></script>
 
     @livewireStyles
