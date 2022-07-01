@@ -1,4 +1,20 @@
-@if(settings('show_top_bar', 'yes') == 'yes')
+@if(settings
+('show_top_bar', 'yes') == 'yes')
+
+<style>
+    .donate-btn{
+        background-color: #FF4949;
+        color: #fff;
+        padding: 5px ;
+        border-radius: 5px;
+    }
+
+    .donate-btn:hover{
+        background-color: #F55353;
+        color: #fff;
+        transition: 0.5s;
+    }
+</style>
 <header class="hidden md:block border-b z-20" style="color: #444444; font-family: 'Open Sans', sans-serif;">
     <div class="container mx-auto text-sm font-sans py-2">
         <div class="flex justify-between">
@@ -53,7 +69,9 @@
                     <li>
                         <a class="hover:underline" href="/cart">My Cart</a>
                     </li>
-                    
+
+                    <button class="donate-btn"> Donate Us</button>
+
                     @auth
                     <li>
                         <div class="inline-block relative" x-data="{ open: false }">

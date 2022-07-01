@@ -6,7 +6,6 @@ use App\Http\Requests\NewOrderRequest;
 use App\Service\OrderService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
-
 class OrderController extends Controller
 {
     protected $orderService;

@@ -18,7 +18,7 @@ class TestEmail extends Mailable implements ShouldQueue
      */
     public function __construct()
     {
-        //
+     
     }
 
     /**
