@@ -43,10 +43,11 @@ class LoginAlertNotification extends Notification
     {
         return (new MailMessage)
         
-                    ->line( $notifiable->name )
-                    ->line('Login Alert !!!'  )
+                    ->line( 'Dear' .$notifiable->name )
+                    ->line('Your account has been locked'  )
+                    ->line('Please Try again after 3 hour')
                     
-                    ->action('VISIT', url('/'))
+                    // ->action('VISIT', url('/'))
                     ->line('Thank you for using our application!');
                    
     }

@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'failed' => 'wrong attempt',
+    'failed' => 'Wrong Attempt Max:3  ',
     'throttle' => 'Too many login attempts. Please try again in :hour hour.',
+    'attempts',
+    'attmpts1'
 
 ];
