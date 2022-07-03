@@ -2,7 +2,9 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/counterup2/2.0.2/index.min.js"></script>
     
 <div >
     <div class="block">
@@ -302,6 +304,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <div class="card text-black">
+                                       
                                     <div class="clock" id="nepal">
                                         
                                     </div>
@@ -324,34 +327,142 @@
                     </section>                  
     </div>
 </div>
-
 </section>
 </div>
 
-<div class="counter-up">
-    <div class="content">
-      <div class="box">
-        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="counter">724</div>
-        <div class="text">Website Reach</div>
-      </div>
-      <div class="box">
-        <div class="icon"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
-        <div class="counter">508</div>
-        <div class="text">Number Of Doners</div>
-      </div>
-      <div class="box">
-        <div class="icon"><i class="fa-solid fa-star"></i></div>
-        <div class="counter">436</div>
-        <div class="text">Ratings</div>
-      </div>
-      <div class="box">
-        <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
-        <div class="counter">120</div>
-        <div class="text">Number Of Volunteers </div>
-      </div>
+<script>
+    setInterval(function(){
+    var date = new Date();
+    var format = [
+        ("0" + date.getHours()).substr(-2)
+      , ("0" + date.getMinutes()).substr(-2)
+      , ("0" + date.getSeconds()).substr(-2)
+    ].join(":");
+    document.getElementById("nepal").innerHTML = format;
+  }, 500)
+  
+  setInterval(function(){
+    var date = new Date();
+    var format = [
+        ("0" + date.getHours()).substr(-2)
+      , ("0" + date.getMinutes()).substr(-2)
+      , ("0" + date.getSeconds()).substr(-2)
+    ].join(":");
+    document.getElementById("us").innerHTML = format;
+  }, 500)
+</script>
+
+
+<div class="container py-5 count-up">
+        <section class="mb-4">
+            <div class="flex items-center mb-4 sm:mb-6">
+                <h2 class="tracking-wide text-lg"></h2>
+                {{-- <h2 class="tracking-wide bg-main-40 bg-gradient-to-r from-main-500 rounded-sm via-blue-500 to-main-400 py-2 px-4 lg:px-8 text-white"></h2> --}}
+                <a class="ml-auto text-sm text-red-600 font-semibold hover:underline" href="{{ route('frontend.products.by-group', 'top') }}"></a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10">
+                
+            
+            <section class="counter-container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                            <div class="col-3">
+                            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <p><span class="counter" data-count="4070">0</span>+</p>
+                            <p><span class="counter-desc">Website Reach</span></p>
+                            </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="col-3">
+                            <div class="icon"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                            <p><span class="counter" data-count="2500">0</span>+</p>
+                            <p><span class="counter-desc">Number Of Doners</span></p>
+                            </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="col-3">
+                            <div class="icon"><i class="fa-solid fa-star"></i></div>
+                            <p><span class="counter" data-count="50">0</span>+</p>
+                            <p><span class="counter-desc">Ratings</span></p>
+                            </div>
+                </div>
+            </section>
+                
+
+            <section>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="col-3">
+                            <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                            <p><span class="counter" data-count="8343">0</span>+</p>
+                            <p><span class="counter-desc">Number Of Volunteers</span></p>
+                            </div>
+                </div>
     </div>
-  </div>
+</div>
+</section>
+</div>
+
+
+<!-- Counter Script -->
+<script>
+    $(document).ready(function($) {
+    //Check if an element was in a screen
+    function isScrolledIntoView(elem){
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+        return ((elemBottom <= docViewBottom));
+    }
+    //Count up code
+    function countUp() {
+        $('.counter').each(function() {
+          var $this = $(this), // <- Don't touch this variable. It's pure magic.
+              countTo = $this.attr('data-count');
+              ended = $this.attr('ended');
+
+        if ( ended != "true" && isScrolledIntoView($this) ) {
+            $({ countNum: $this.text()}).animate({
+            countNum: countTo
+          },
+          {
+            duration: 2500, //duration of counting
+            easing: 'swing',
+            step: function() {
+              $this.text(Math.floor(this.countNum));
+            },
+            complete: function() {
+              $this.text(this.countNum);
+            }
+          });
+        $this.attr('ended', 'true');
+        }
+        });
+    }
+    //Start animation on page-load
+    if ( isScrolledIntoView(".counter") ) {
+        countUp();
+    }
+    //Start animation on screen
+    $(document).scroll(function() {
+        if ( isScrolledIntoView(".counter") ) {
+            countUp();
+        }
+    });
+});
+</script>
+  
+  
+
 <div class="container py-5">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">
@@ -359,16 +470,19 @@
                 {{-- <h2 class="tracking-wide bg-main-40 bg-gradient-to-r from-main-500 rounded-sm via-blue-500 to-main-400 py-2 px-4 lg:px-8 text-white"></h2> --}}
                 <a class="ml-auto text-sm text-red-600 font-semibold hover:underline" href="{{ route('frontend.products.by-group', 'top') }}"></a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-20">
                 
             
-              <section>
+            <section>
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="box">
                         <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div class="para">hhhh</div>
-                        <a href="#"><button class="button">Educate</button></a>
+                        <div class="title">Educate</div>
+                        <div class="para">Your generosity through sponsorship can change children's lives by providing 
+                            them with food, education, medical care & opportunity.
+                        </div>
+                        <div class="button"><button>Educate</button></div>
                     </div>
                     </div>
                 </div>
@@ -377,11 +491,14 @@
             <section>
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
-                       <div class="feature">
-                        <h1>
-                            Number Of Doners
-                        </h1>
-                       </div>
+                    <div class="box">
+                        <div class="icon"><i class="fa-solid fa-apple-whole"></i></div>
+                        <div class="title">Feed</div>
+                        <div class="para">Every person knows hunger. We have the opportunity to alleviate suffering for someone
+                            every time you give.
+                        </div>
+                        <div class="button"><button>Feed</button></div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -389,11 +506,14 @@
             <section>
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
-                       <div class="feature">
-                        <h1>
-                            Rating
-                        </h1>
-                       </div>
+                    <div class="box">
+                        <div class="icon"><i class="fa-solid fa-om"></i></div>
+                        <div class="title">Spread</div>
+                        <div class="para">Provide hope by sending upstream guru to spread the 
+                            gospel of Ram krishna throughout world.
+                        </div>
+                        <div class="button"><button>Feed</button></div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -401,56 +521,27 @@
             <section>
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
-                       <div class="feature">
-                        <h1>
-                            Number Of Volunteers
-                        </h1>
-                       </div>
+                    <div class="box">
+                        <div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <div class="title">Give</div>
+                        <div class="para">Every single cent counts,and your generosity matters. 
+                            Each donation we receive enables us to keep helping people who help people.  
+                        </div>
+                        <div class="button"><button>Give</button></div>
+                    </div>
                     </div>
                 </div>
             </section>
     </div>
 </div>
-
 </section>
 </div>
 
 
-<!-- calendar script -->
-  <script>
-    setInterval(function(){
-  var date = new Date();
-  var format = [
-      ("0" + date.getHours()).substr(-2)
-    , ("0" + date.getMinutes()).substr(-2)
-    , ("0" + date.getSeconds()).substr(-2)
-  ].join(":");
-  document.getElementById("nepal").innerHTML = format;
-}, 500)
 
-setInterval(function(){
-  var date = new Date();
-  var format = [
-      ("0" + date.getHours()).substr(-2)
-    , ("0" + date.getMinutes()).substr(-2)
-    , ("0" + date.getSeconds()).substr(-2)
-  ].join(":");
-  document.getElementById("us").innerHTML = format;
-}, 500)
-  </script>
 
-<!-- counter script -->
-<script>
-  $(document).ready(function(){
-    $('.counter').counterUp({
-      delay: 10,
-      time: 1200
-    });
-  });
-  </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+
 
     <div class="bg-gray-100">
         <div class="container py-5 md:py-8 ">

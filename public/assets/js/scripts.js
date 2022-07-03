@@ -26,3 +26,4 @@
         actionTextColor: type == 'default' ? '#4CAF50' : '#ffc107'
     });
 }
+
