@@ -1,6 +1,7 @@
 <style>
     .sticked>#main-header {
         padding-top: 5px !important;
+        
         padding-bottom: 10px !important;
     }
 
