@@ -5,12 +5,17 @@ namespace App\Listeners;
 use App\Events\SomeoneLoginAttempt;
 use App\Jobs\SendLoginAttemptJobs;
 use App\Mail\SendMarkDownMail;
+use App\Mail\WelcomeEmail;
+use App\Mail\WelcomeMail;
+use App\Notifications\LoginAlertNotification;
 use App\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Auth\Events\Lockout;
+
 
 
 class SendLoginAttempt
@@ -35,14 +40,16 @@ class SendLoginAttempt
      * @param  \App\Events\SomeoneLoginAttempt  $event
      * @return void
      */
-    public function handle(SomeoneLoginAttempt $event)
+    public function handle(SomeoneLoginAttempt $event )
     {
+        if ($user = User::where('email', $event->request->email)->first()) {
+            $user->notify(new LoginAlertNotification($user->email));
+            
+        }
+        // if ($user = User::where('email', $event->request->email)->first()) {
+        //     Mail::to($user->email)->send(new WelcomeEmail($user->email));
+        // }
+        
     
-      
-            Mail::to('manindratamang4@gmail.com ')->send(new SendMarkDownMail($event->maxAttempt));
-            // Mail::to($user->email)->send(new SendMarkDownMail($event->maxAttempt));
-
-        // $delay=now()->addSecond(10);
-        // SendLoginAttemptJobs::dispatch($event->user)->delay($delay);
-    }
+}
 }

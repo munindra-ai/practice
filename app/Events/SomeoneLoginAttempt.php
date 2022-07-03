@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\User;
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,11 +12,12 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\MaxAttemptsExceededException;
+use Symfony\Component\HttpFoundation\Request;
 
 class SomeoneLoginAttempt
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $maxAttempt;
+    public $request;
     // public User $user;
 
     /**
@@ -23,9 +25,9 @@ class SomeoneLoginAttempt
      *
      * @return void
      */
-    public function __construct($maxAttempt)
+    public function __construct(Request $request)
     {
-        $this->maxAttempt=$maxAttempt ; 
+        $this->request = $request; 
     }
     
 

@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class LoginAlertNotification extends Notification
 {
     use Queueable;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**
@@ -41,9 +42,13 @@ class LoginAlertNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Login Alert')
-                    ->action('Notification Action', url('/'))
+        
+                    ->line( $notifiable->name )
+                    ->line('Login Alert !!!'  )
+                    
+                    ->action('VISIT', url('/'))
                     ->line('Thank you for using our application!');
+                   
     }
 
     /**
