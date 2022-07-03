@@ -71,10 +71,10 @@ class RegisterController extends Controller
     // protected function validator(array $data)
     // {
     //     return Validator::make($data, [
-    //     //    'userid' => ['required', 'string', 'max:255'],
-    //         // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         // 'password' => ['required', 'string'],
-    //         //'g-recaptcha-response' => settings('register_enable_recaptcha') == 'yes' ? 'recaptcha' : 'nullable',
+        //    'userid' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string'],
+            //'g-recaptcha-response' => settings('register_enable_recaptcha') == 'yes' ? 'recaptcha' : 'nullable',
     //     ]);
     // }
 

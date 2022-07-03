@@ -7,12 +7,12 @@
     <thead>
       <tr>
         <th scope="col">Email</th>
-        <th scope="col" style="margin-left:10px">Amount</th>
+        <td>{{$email}}</td>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{$email}}</td>
+        <th scope="col" style="margin-left:10px">Amount</th>
         <td style="margin-left:10px">$100</td>
       </tr>
     </tbody>

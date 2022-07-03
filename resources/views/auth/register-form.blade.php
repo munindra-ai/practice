@@ -20,7 +20,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="userid" value="{{ old('userid') }}" placeholder="Your New User id">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="userid" value="{{ old('userid') }}" placeholder="Your New User id" required>
             @error('userid')
             <p class="text-danger">{{$errors}}</p>
         @enderror
@@ -40,7 +40,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
         </svg>
         </span>
-        <input :type="show ? 'text' : 'password'" class="w-full p-1 placeholder-purple-900 placeholder-opacity-75 text-sm font-medium" name="password" placeholder="Enter Password" autocomplete="new-password">
+        <input :type="show ? 'text' : 'password'" class="w-full p-1 placeholder-purple-900 placeholder-opacity-75 text-sm font-medium" name="password" placeholder="Enter Password" autocomplete="new-password" required>
         <div class=" flex items-center text-sm leading-5" x-cloak>
             <svg x-show="show" class="h-4 w-4 text-purple-600" fill="none" @click="show = !show" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">
                 <path fill="currentColor" d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
@@ -66,7 +66,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
         </span>
-        <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="firstname" placeholder="Your first name">
+        <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="firstname" placeholder="Your first name" required>
     </div>
     @if($errors->register->has('firstname'))
     <p class="text-red-500 text-xs mt-2">
@@ -82,7 +82,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="lastname" placeholder="Your last name">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="lastname" placeholder="Your last name" required>
         </div>
         @if($errors->register->has('lastname'))
         <p class="text-red-500 text-xs mt-2">
@@ -98,14 +98,43 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="date" name="dob" placeholder="datepicker">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="date" id="dob" name="dob" onclick = "ageCalculator()" placeholder="datepicker" required>
         </div>
+        <span id = "datePickerMessage"> </span>
         @if($errors->register->has('dob'))
         <p class="text-red-500 text-xs mt-2">
             {{ $errors->register->first('dob') }}
         </p>
         @endif
     </div>
+    <script>  
+  
+        function ageCalculator() {
+          var userinput = document.getElementById("dob").value;
+          var dob = new Date(userinput);
+          if(userinput==null || userinput=='') {
+            document.getElementById("datePickerMessage").innerHTML = "**Choose a date please!";  
+            return false; 
+          } else {
+          
+          //calculate month difference from current date in time
+          var month_diff = Date.now() - dob.getTime();
+          
+          //convert the calculated difference in date format
+          var age_dt = new Date(month_diff); 
+          
+          //extract year from date    
+          var year = age_dt.getUTCFullYear();
+          
+          //now calculate the age of the user
+          var age = Math.abs(year - 1970);
+          
+          //display the calculated age
+          return document.getElementById("datePickerMessage").innerHTML =  
+                 'Age is ' + age + " years.";
+          }
+      }
+      </script>
      {{-- address --}}
      <div class="mb-6">
         <div class="flex items-center space-x-2 p-2 border-2 rounded border-purple-700">
@@ -114,7 +143,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_address" placeholder="Your address">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_address" placeholder="Your address" required>
         </div>
         @if($errors->register->has('parent_address'))
         <p class="text-red-500 text-xs mt-2">
@@ -130,7 +159,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_apt" placeholder="Your apartment name">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_apt" placeholder="Your apartment name" required>
         </div>
         @if($errors->register->has('parent_apt'))
         <p class="text-red-500 text-xs mt-2">
@@ -145,7 +174,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_city" placeholder="City name">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_city" placeholder="City name" required>
         </div>
         @if($errors->register->has('parent_city'))
         <p class="text-red-500 text-xs mt-2">
@@ -161,7 +190,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_state" placeholder="State">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_state" placeholder="State" required>
         </div>
         @if($errors->register->has('parent_state'))
         <p class="text-red-500 text-xs mt-2">
@@ -177,7 +206,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <select class="form-select w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_country">
+            <select class="form-select w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_country" required>
                 <option>USA</option>
                 <option value="AF">Afghanistan</option>
                 <option value="AX">Aland Islands</option>
@@ -442,7 +471,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                 </span>
-                <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_zip" placeholder="Zip">
+                <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_zip" placeholder="Zip" required>
             </div>
             @if($errors->register->has('parent_zip'))
             <p class="text-red-500 text-xs mt-2">
@@ -458,7 +487,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="phone" placeholder="Your Contact number">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="phone" placeholder="Your Contact number" required>
         </div>
         @if($errors->register->has('phone'))
         <p class="text-red-500 text-xs mt-2">
@@ -476,7 +505,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
             </span>
-            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="email" value="{{ old('email') }}" placeholder="your@email.com">
+            <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="email" value="{{ old('email') }}" placeholder="your@email.com" required>
         </div>
         @if($errors->register->has('email'))
         <p class="text-red-500 text-xs mt-2">
