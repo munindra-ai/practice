@@ -30,7 +30,7 @@
         </div>
         @if($errors->login->has('email'))
         <p class="text-red-500 text-xs mt-2">
-            {{ $errors->login->first('userid') }}
+            {{ $errors->login->first('email') }}
             <!-- <strong>{{ $errors->first('attempts') }}</strong> -->
         </p>
         @endif

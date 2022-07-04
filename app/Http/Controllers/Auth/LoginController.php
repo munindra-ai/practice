@@ -62,10 +62,11 @@ class LoginController extends Controller
 
     protected function validateLogin(Request $request)
     {
+        
         $request->validateWithBag('login', [
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'email'=>'required|email|max:255|exists:users',
+            // 'email'=>'required|email|max:255|exists:users',
             // 'g-recaptcha-response' => 'recaptcha',
         ]);
     }
@@ -146,6 +147,11 @@ class LoginController extends Controller
     }
     protected function authenticated(Request $request, $user)
     {
+       
+       
         session()->forget('login.attempts'); // clear attempts
-    }
+    //     if(session()->forget('login.attempts')){
+            
+    // }
+}
 }

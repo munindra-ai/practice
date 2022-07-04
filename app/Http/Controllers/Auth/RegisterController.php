@@ -86,7 +86,15 @@ class RegisterController extends Controller
      */
 
     // for making validation
-
+    protected function validateRegister(Request $request)
+    {
+        $request->validateWithBag('register', [
+            // $this->username() => 'required|string',
+            'password' => 'required|string',
+            'email'=>'required|email|max:255|exists:users',
+            // 'g-recaptcha-response' => 'recaptcha',
+        ]);
+    }
 
     public function create(RegisterService $register,Request $request)
     { 
@@ -121,12 +129,13 @@ public function registerSuccess(Request $request)
     {
         
       
-            // $request->validate([
-            //     'order_id' => 'required|exists:orders,id',
-            //     'paymentId' => 'required',
-            //     'token' => 'required',
-            //     'PayerID' => 'required'
-            // ]);
+            $request->validateWithBag(['register',
+                'email'=>'required'|'email',
+                'order_id' => 'required|exists:orders,id',
+                'paymentId' => 'required',
+                'token' => 'required',
+                'PayerID' => 'required'
+            ]);
             $user= User::findOrFail($request->id);
             if($request->input('paymentId') && $request->input('PayerID')){
                 $transaction = $this->gateway->completePurchase(array(

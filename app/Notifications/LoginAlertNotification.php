@@ -30,6 +30,7 @@ class LoginAlertNotification extends Notification
      */
     public function via($notifiable)
     {
+
         return ['mail','database'];
     }
 
@@ -44,6 +45,8 @@ class LoginAlertNotification extends Notification
         return (new MailMessage)
         
                     ->line( 'Dear' .$notifiable->name )
+                    
+                    ->subject('Wrong Password Attempt Alert')
                     ->line('Your account has been locked'  )
                     ->line('Please Try again after 3 hour')
                     
@@ -62,6 +65,9 @@ class LoginAlertNotification extends Notification
     {
         return [
             'user'=>$notifiable,
+            $notifiable['is_account_Locked']=>0,
+            
+
             'message'=>"test alert".now()->toDateString()
         ];
     }

@@ -44,12 +44,9 @@ class SendLoginAttempt
     {
         if ($user = User::where('email', $event->request->email)->first()) {
             $user->notify(new LoginAlertNotification($user->email));
-            
+            $user['is_account_Locked'] ='0';
+            $user->save();
         }
-        // if ($user = User::where('email', $event->request->email)->first()) {
-        //     Mail::to($user->email)->send(new WelcomeEmail($user->email));
-        // }
-        
     
 }
 }

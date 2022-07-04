@@ -15,7 +15,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            // $table->boolean('status')->nullable()->default(1);
+            // $table->boolean('status')->nullable()->default(1)s;
             // $table->enum('lock_status',['is_lock','not_lock'])->default('not_lock');
             $table->string('type');
             $table->morphs('notifiable');
