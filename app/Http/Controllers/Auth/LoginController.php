@@ -150,8 +150,5 @@ class LoginController extends Controller
        
        
         session()->forget('login.attempts'); // clear attempts
-    //     if(session()->forget('login.attempts')){
-            
-    // }
 }
 }
