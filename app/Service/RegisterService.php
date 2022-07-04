@@ -11,12 +11,13 @@ use App\Http\Requests\RegisterUser;
 
 class RegisterService{
     
- public function createUser($request,RegisterUser $validation)
+ public function createUser($request)
     {
         
         try{
+           
         $data =new User([
-            'Email'  => $request['email'],
+            'email'  => $request->email,
             'password' => bcrypt($request->password),
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
@@ -41,6 +42,7 @@ class RegisterService{
             'payment_status' => 'payment_pending',
             
         ]);
+       
         $data->save();
         return $data->id;
        

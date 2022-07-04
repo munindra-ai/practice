@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 use App\Service\RegisterService;
 use App\Http\Requests\newRegisterRequest;
+
 
 
 
@@ -63,22 +65,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-      * @param  array  $data
-      * @return \Illuminate\Contracts\Validation\Validator
-      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-        //    'userid' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string'],
-            //'g-recaptcha-response' => settings('register_enable_recaptcha') == 'yes' ? 'recaptcha' : 'nullable',
-    //     ]);
-    // }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -86,14 +72,39 @@ class RegisterController extends Controller
      */
 
     // for making validation
-
     public function create(RegisterService $register,Request $request)
     { 
         // $amount= DB::table('settings')->where('name','register_amount')->pluck('val');
-        try {     
+        try {  
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|unique:users|max:255',
+                'password' => 'required',
+                'firstname'=>'required',
+                'lastname'=>'required',
+                'dob'=>'required',
+                'parent_address'=>'required',
+                'parent_apt'=>'required',
+                'parent_city'=>'required',
+                'parent_state'=>'required',
+                'parent_country'=>'required',
+                'parent_zip'=>'required|numeric',
+                'phone'=>'required|numeric',
+            ]);
+         
+            if ($validator->fails()) {
+                // For example:
+                return redirect('register')
+                        ->withErrors($validator)
+                        ->withInput();
+         
+                // Also handy: get the array with the errors
+                $validator->errors();
+         
+                // or, for APIs:
+                $validator->errors()->toJson();
+            }  
             $data=$register->createUser($request);
            
-            //   dd($this->amount);
                $response = $this->gateway->purchase(
             array(
                 "amount" => $request->registerAmount,   //$order->total_price,
@@ -120,13 +131,6 @@ class RegisterController extends Controller
 public function registerSuccess(Request $request)
     {
         
-      
-            // $request->validate([
-            //     'order_id' => 'required|exists:orders,id',
-            //     'paymentId' => 'required',
-            //     'token' => 'required',
-            //     'PayerID' => 'required'
-            // ]);
             $user= User::findOrFail($request->id);
             if($request->input('paymentId') && $request->input('PayerID')){
                 $transaction = $this->gateway->completePurchase(array(
@@ -143,113 +147,15 @@ public function registerSuccess(Request $request)
                     $user['paypal_transaction_id'] = $request->payerId;
                    $user["payment_status"]='payment_done';
                     $user->save(); 
-                    // $mail=[
-                    //    til $request->payerId => '',
-                    // ];
-
-                    
+   
                     \Mail::to($user->email)->send(new \App\Mail\RegisterMail($user->email));   
-                    return redirect('login')->with('message','successfully registered '.$user->email);
+                   session()->flash('successAlert','successfully registered '.$user->email);
+                   return redirect('login');
                 }
-    else{
+      else{
         return "error";
     }
-            }
-             
-          
-      
-        
-    }
-
-    // Method overwritten from RegistersUsers
-    public function register(Request $request)
-    {
-        try {
-            DB::beginTransaction();
-
-            $validator = $this->validator($request->all());
-            if ($validator->fails()) {
-                return redirect()->route('register')
-                    ->withErrors($validator, 'register')
-                    ->withInput();
-            }
-
-            event(new Registered($user = $this->create($request->all())));
-
-            DB::commit();
-
-            $this->guard()->login($user);
-
-            if ($response = $this->registered($request, $user)) {
-                return $response;
-            }
-
-            return $request->wantsJson()
-                ? new JsonResponse([], 201)
-                : redirect($this->redirectPath());
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            logger('Error while registering user.');
-            report($th);
-            return back()
-                ->with('unknown', 'Something went wrong while creating an account for you. Please try again later.')
-                ->withInput();
-        }
-    }
-    
-    public function cancelled()
-    {
-        return redirect()->route('register')->with('error', 'Sorry the payment has been cancelled.');
-    }
-
-public function sendEmail()
-{
-    /** 
-     * Store a receiver email address to a variable.
-     */
-    $reveiverEmailAddress = "np03a190240@heraldcollege.edu.np";
-
-    /**
-     * Import the Mail class at the top of this page,
-     * and call the to() method for passing the 
-     * receiver email address.
-     * 
-     * Also, call the send() method to incloude the
-     * HelloEmail class that contains the email template.
-     */
-    Mail::to($reveiverEmailAddress)->send(new TestEmail());
-
-    /**
-     * Check if the email has been sent successfully, or not.
-     * Return the appropriate message.
-     */
-    if (Mail::failures() != 0) {
-        return "Email has been sent successfully.";
-    }
-    return "Oops! There was some error sending the email.";
+ }       
 }
 }
-  // $data->userid  => $request->userid,
-                // $data->password = bcrypt($request->password),
-                // $data->firstname = $request->firstname;
-                // $data->lastname = $request->lastname;
-                // $data->dob = $request->dob;
-                // $data->parent_address = $request->parent_address;
-                // $data->parent_apt = $request->parent_apt;
-                // $data->parent_city = $request->parent_city;
-                // $data->parent_state = $request->parent_state;
-                // $data->parent_country = $request->parent_country;
-                // $data->parent_zip = $request->parent_zip;
-                // $data->phone = $request->phone;
-                // $data->email = $request->email;
-                // $data->spouse_first_name = $request->spouse_first_name;
-                // $data->spouse_last_name = $request->spouse_last_name;
-                // $data->child_first_name = $request->child_first_name;
-                // $data->child_last_name = $request->child_last_name;
-                // $data->child_age = $request->child_age;
-                // $data->child_address = $request->child_address;
-                // $data->child_city = $request->child_city;
-                // $data->child_state = $request->child_state;
-                // $data->child_country = $request->child_country;
-                // $data->child_zip = $request->child_zip;
-                
+ 

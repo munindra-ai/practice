@@ -42,10 +42,12 @@
                     </li>
                     @else
                     <li>
-                        <span x-data="{ open: false }" x-init="() => { @if($errors->register->any()) open = true @endif }" @open-register-form.window="open = true" @hide-register-form.window="open = false">
+                        {{-- <span x-data="{ open: false }" x-init="() => { @if($errors->register->any()) open = true @endif }" @open-register-form.window="open = true" @hide-register-form.window="open = false">
                             <button class="hover:underline" @click="open = true">Register</button>
                             @include('auth.register-modal')
-                        </span>
+                        </span>--}}
+                            <a class="hover:underline" href="{{ route('register') }}">Register</a>
+
                     </li>
                     @endif
                     @if(Route::currentRouteName() == 'login')

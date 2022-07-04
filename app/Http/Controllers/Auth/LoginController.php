@@ -139,23 +139,4 @@ class LoginController extends Controller
           
             ])->redirectTo('/login');
         }
-    //     if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
-    //         $request->session()->regenerateToken();
-    //         return redirect("/dashboard");
-        
-    //     }
-    //     return back()->withErrors(['failed'=>"invalid username and psw"]);
-    // }
-        
-
-
-        // $attempts = session()->get('login.attempts', 0); // get attempts, default: 0
-        // session()->put('login.attempts', $attempts + 1); // increase attempts
-    
-    // }
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     session()->forget('login.attempts'); // clear attempts
-    // }
-}
-
+    }

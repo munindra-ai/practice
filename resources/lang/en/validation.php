@@ -133,6 +133,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email'=>[
+            'required'=>'Email field cannot be empty',
+            'unique' => 'The mail u have entered is already taken'
+        ],
     ],
 
     'recaptcha' => 'Please verify that you are a human!',

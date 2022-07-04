@@ -1,6 +1,7 @@
 @component('mail::message')
 
 {{$email}}<br>
+
 <h1>You have sucessfully logged in.</h1>
 <p>And due to that reason we have deduced $100 from your balance </p>
 <table class="table">
