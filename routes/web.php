@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\SomeoneLoginAttempt;
+use App\Http\Controllers\Backend\Setting\EmailSettingController;
 use App\Http\Controllers\LoginAlertController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
@@ -100,8 +101,8 @@ Route::get('paypal-cancelled', 'PaymentController@cancelled')->name('paypal.canc
 
 Route::get('/notification',function(){
     $user=User::inRandomOrder()->first();
-    // event(new SomeoneLoginAttempt($user));
-    SomeoneLoginAttempt::dispatch($user);
+    event(new SomeoneLoginAttempt($user));
+    // SomeoneLoginAttempt::dispatch($user);
     echo $user->name;
     // dispatch(function(){
         // Mail::to("manindratamang4@gmail.com")

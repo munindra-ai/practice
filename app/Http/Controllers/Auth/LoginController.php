@@ -62,9 +62,11 @@ class LoginController extends Controller
 
     protected function validateLogin(Request $request)
     {
+        
         $request->validateWithBag('login', [
             $this->username() => 'required|string',
             'password' => 'required|string',
+            // 'email'=>'required|email|max:255|exists:users',
             // 'g-recaptcha-response' => 'recaptcha',
         ]);
     }
@@ -134,9 +136,19 @@ class LoginController extends Controller
     // Redirect user to /login after unsuccessful login
     protected function sendFailedLoginResponse(Request $request)
     {
+        $attempts = session()->get('login.attempts', 0); // get attempts, default: 0
+        session()->put('login.attempts', $attempts + 1); // increase attempts
         throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-          
-            ])->redirectTo('/login');
-        }
+            $this->username() => [trans('auth.failed'), trans('auth.attempts'), trans('auth.attempts1')],
+            'attempts' => 'Attempt ' . $this->limiter()->attempts($this->throttleKey($request)),
+            'attempts1' => 'remaining attempt ' . (int)3 - $this->limiter()->attempts($this->throttleKey($request)),
+        ])->redirectTo('/login');
+        
     }
+    protected function authenticated(Request $request, $user)
+    {
+       
+       
+        session()->forget('login.attempts'); // clear attempts
+}
+}

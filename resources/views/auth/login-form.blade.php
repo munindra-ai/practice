@@ -2,10 +2,7 @@
     <h1 class="text-3xl font-bold text-gray-800 leading-8">Welcome Back</h1>
     <div class="text-gray-500 text-sm">Login to continue</div>
 </div>
-<!-- @error('failed')
-{{$message}}
 
-@enderror -->
 <form method="POST" action="{{ route('login') }}" class="text-gray-700">
     @csrf
 
@@ -17,6 +14,8 @@
     @if(Session::has('message'))
     <div class="bg-green-100 border border-green-400 text-green-700 text-sm p-2 rounded mb-4 success alert-success" role="success">
         <span class="block sm:inline">{{ session()->get('message') }}</span>
+        
+
     </div>
     @endif
     
@@ -31,12 +30,21 @@
         </div>
         @if($errors->login->has('email'))
         <p class="text-red-500 text-xs mt-2">
-            {{ $errors->login->first('userid') }}
+            {{ $errors->login->first('email') }}
+            <!-- <strong>{{ $errors->first('attempts') }}</strong> -->
         </p>
         @endif
         @error('email')
         <p class="text-red-500 text-xs mt-2">
-            <strong>{{ $message }}</strong>
+            <strong>{{ $message }} </strong>
+            <!-- <strong>ATTEMPT {{ $errors->first('attempts') }} remaining {{3 - (int)$errors->first('attempts') }}</strong> -->
+            <strong> {{ $errors->first('attempts')}} </strong>
+            <strong>{{ $errors->first('attempts1')}} </strong>
+            <!-- <strong> {{3 - (int)$errors->first('attempts') }} </strong> -->
+
+            
+
+            
         </p>
         @enderror
     </div>

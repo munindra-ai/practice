@@ -24,7 +24,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         SomeoneLoginAttempt::class=>[
             SendLoginAttempt::class 
-        ]
+        ],
+        \Illuminate\Auth\Events\Lockout::class => [
+            \App\Listeners\UserLockedOut::class,
+        ],
     ];
 
     /**
