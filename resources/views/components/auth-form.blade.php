@@ -4,7 +4,7 @@
             <div class="flex items-stretch bg-white shadow-lg relative rounded-lg">
                 <div class="hidden md:block w-full md:w-6/12 bg-pattern">
                     <div class="grid h-full">
-                        {{ $left }}
+                        {{ $form }}
                     </div>
                 </div>
                 <div class="w-full md:w-6/12 p-10">
