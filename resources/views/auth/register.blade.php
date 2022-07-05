@@ -9,7 +9,7 @@
     </x-slot>
     <x-slot name="form">
         <div class="text-center md:text-right mb-4">
-            Already have account? <a class="text-purple-600 hover:underline focus:underline" href="{{ route('login') }}">Login</a>
+            Already have account? <a class="text-purple-600 hover " href="{{ route('login') }}">Login</a>
         </div>
 
         @include('auth.register-form')

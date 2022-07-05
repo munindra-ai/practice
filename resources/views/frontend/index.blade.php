@@ -166,7 +166,7 @@
         </section>
     </div>
 
-
+<!-- News and newsletter -->
     <div class="container py-5">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">
@@ -211,9 +211,9 @@
                             <h5 class="card-title">Newsletter</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
 
-                            <button class="btn">
+                            <!-- <button class="btn">
                                 <a href="#">Submit</a>
-                            </button> 
+                            </button>  -->
                             </div>
                         </div>
                         </div>
@@ -225,7 +225,7 @@
         </div>
     </section>
 </div>
-
+<!-- Advertisment and calander -->
 <div class="container py-5">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">
@@ -259,7 +259,6 @@
 
 
                     <section>
-                        
                             <div class="row justify-content-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <div class="card text-black">
@@ -270,11 +269,12 @@
                                     </div>
                                 </div>
                             </div>
-                        
                     </section>                  
  </div>
 </div>
 
+
+<!-- Date Converter and Clock -->
 <div class="container py-5">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">
@@ -286,7 +286,6 @@
                 
             
             <section>
-               
                     <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
                        <div class="converter">
@@ -300,59 +299,27 @@
 
 
                     <section>
-                        <div class=" py-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <div class="card text-black">
-                                       
-                                    <div class="clock" id="nepal">
-                                        
-                                    </div>
-                                    <div class="place">
-                                            <h1>Nepal</h1>
-                                        </div>
+                       
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-6 col-xl-4">
+                                <div class="time_zone">
+                                            <div class="clock" data-timezone="Asia/Kathmandu"></div>
+                                                <div class="place_name">Nepal,Kathmandu</div>
 
-                                        <div class="clock" id="us">
-                                        
-                                    </div>
-                                    <div class="place">
-                                            <h1>Us</h1>
-                                        </div>
-                                            
-                                            
-                                    </div>
+                                            <div class="clock" data-timezone="America/New_York"></div>
+                                                <div class="place_name">US,New York</div>
+                                        </div>  
                                 </div>
                             </div>
-                        </div>
+                        
                     </section>                  
     </div>
 </div>
 </section>
 </div>
 
-<script>
-    setInterval(function(){
-    var date = new Date();
-    var format = [
-        ("0" + date.getHours()).substr(-2)
-      , ("0" + date.getMinutes()).substr(-2)
-      , ("0" + date.getSeconds()).substr(-2)
-    ].join(":");
-    document.getElementById("nepal").innerHTML = format;
-  }, 500)
-  
-  setInterval(function(){
-    var date = new Date();
-    var format = [
-        ("0" + date.getHours()).substr(-2)
-      , ("0" + date.getMinutes()).substr(-2)
-      , ("0" + date.getSeconds()).substr(-2)
-    ].join(":");
-    document.getElementById("us").innerHTML = format;
-  }, 500)
-</script>
 
-
+<!-- Counter Up -->
 <div class="container py-5 count-up">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">
@@ -412,57 +379,9 @@
 </div>
 
 
-<!-- Counter Script -->
-<script>
-    $(document).ready(function($) {
-    //Check if an element was in a screen
-    function isScrolledIntoView(elem){
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
-        return ((elemBottom <= docViewBottom));
-    }
-    //Count up code
-    function countUp() {
-        $('.counter').each(function() {
-          var $this = $(this), // <- Don't touch this variable. It's pure magic.
-              countTo = $this.attr('data-count');
-              ended = $this.attr('ended');
 
-        if ( ended != "true" && isScrolledIntoView($this) ) {
-            $({ countNum: $this.text()}).animate({
-            countNum: countTo
-          },
-          {
-            duration: 1500, //duration of counting
-            easing: 'swing',
-            step: function() {
-              $this.text(Math.floor(this.countNum));
-            },
-            complete: function() {
-              $this.text(this.countNum);
-            }
-          });
-        $this.attr('ended', 'true');
-        }
-        });
-    }
-    //Start animation on page-load
-    if ( isScrolledIntoView(".counter") ) {
-        countUp();
-    }
-    //Start animation on screen
-    $(document).scroll(function() {
-        if ( isScrolledIntoView(".counter") ) {
-            countUp();
-        }
-    });
-});
-</script>
   
-  
-
+<!-- Features -->
 <div class="container py-5">
         <section class="mb-4">
             <div class="flex items-center mb-4 sm:mb-6">

@@ -4,7 +4,7 @@
 <x-auth-form>
     <x-slot name="left">
         <div class="h-full flex items-center">
-            @include('frontend.svg.login')
+            <!-- @include('frontend.svg.login') -->
         </div>
     </x-slot>
     

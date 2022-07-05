@@ -1,17 +1,4 @@
-<style>
-    .dropdown:hover>.dropdown-menu {
-        display: block;
-    }
 
-    .category-dropdown-menu {
-        z-index: 999;
-    }
-
-    .category-dropdown-menu[data-show] {
-        display: block;
-    }
-
-</style>
 <nav class="hidden md:block text-dark">
     <div class="container text-sm font-semibold tracking-wider">
         <ul class="flex border-b-2 border-primary divide-x">
