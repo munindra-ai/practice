@@ -64,7 +64,7 @@ class LoginController extends Controller
     {
         
         $request->validateWithBag('login', [
-            $this->username() => 'required|string',
+            $this->username() => 'required|string|exists:users',
             'password' => 'required|string',
             // 'email'=>'required|email|max:255|exists:users',
             // 'g-recaptcha-response' => 'recaptcha',
