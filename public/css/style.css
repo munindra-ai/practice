@@ -18,38 +18,38 @@ input:-internal-autofill-selected {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 } */
 /* Top Bar */
-span {
+span{
     font-size: 16px;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
     padding: 8px;
 }
-.donate-btn {
-    background-color: #646fd4;
+.donate-btn{
+    background-color: #646FD4;
     color: #fff;
-    padding: 8px;
+    padding: 8px ;
     border-radius: 2px;
     font-size: 16px;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
 }
 
-.donate-btn:hover {
-    background-color: #4cacbc;
+.donate-btn:hover{
+    background-color: #4CACBC;
     color: #fff;
     transition: 0.2s;
 }
-li .hover {
+li .hover{
     padding: 8px;
 }
-.hover {
+.hover{
     font-size: 16px;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
 }
-.hover:hover {
-    color: #646fd4;
+.hover:hover{
+    color: #646FD4;
 }
 
 /* header.blade */
-.dropdown:hover > .dropdown-menu {
+.dropdown:hover>.dropdown-menu {
     display: block;
 }
 
@@ -60,12 +60,12 @@ li .hover {
 .category-dropdown-menu[data-show] {
     display: block;
 }
-.inline-block {
+.inline-block{
     font-size: 16px;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
 }
-.inline-block:hover {
-    color: #646fd4;
+.inline-block:hover{
+    color: #646FD4;
 }
 
 /* Sections */
@@ -82,20 +82,21 @@ li .hover {
     padding-top: 30px;
 }
 
+
 .card-title {
     text-align: initial;
     color: #1b2430;
     font-size: 20px;
     font-weight: 500;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
 }
-.text-muted {
+.text-muted{
     text-align: initial;
     font-size: 16px;
     padding: 0;
     padding-top: 10px;
     font-weight: 400;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
 }
 
 /* .btn {
@@ -112,12 +113,14 @@ li .hover {
     color: #eee;
 } */
 
+
 section .container:hover {
     box-shadow: 1px 5px 10px #aae2c3be;
     transition: 0.1s linear;
     cursor: pointer;
 }
 .container .py-5 {
+   
     height: 400px;
 }
 .py-5 {
@@ -146,7 +149,8 @@ section .container:hover {
     padding-top: 20%;
 }
 
-.converter h1 {
+.converter h1{
+    
     font-size: 20px;
 }
 
@@ -164,32 +168,35 @@ section .container:hover {
     color: #1b2430;
 }
 
-/* Counter */
 
-.col-3 {
+/* Counter */
+ 
+.col-3{
     margin-top: 5rem;
     border: 1px dashed #1b2430;
-    border-radius: 5px;
+    border-radius: 5px; 
 }
-.col-3:hover {
+.col-3:hover{
     box-shadow: 1px 5px 10px #aae2c3be;
     transition: 0.1s linear;
     cursor: pointer;
 }
 p {
     text-align: center;
-    font-size: 16px;
+	font-size: 16px;
     padding: 10px;
+    
 }
 
 .counter-desc {
     text-align: center;
-    font-size: 20px;
-    font-weight: 600;
+	font-size: 20px;
+	font-weight: 600;
 }
 
+
 /* Features */
-.box {
+.box{
     margin-top: 5rem;
     height: 50vh;
 }
@@ -198,7 +205,7 @@ p {
     font-size: 48px;
 }
 
-.title {
+.title{
     text-align: center;
     padding: 10px;
     font-size: 30px;
@@ -228,63 +235,53 @@ p {
     border: none;
 }
 
-.time_zone {
+
+
+.time_zone{
     padding-top: 60px;
     justify-content: space-around;
     display: block;
+    
 }
-.clock {
+.clock{
     font-size: 30px;
+    
 }
-.place_name {
+.place_name{
     text-align: center;
 }
 
 /* Register Form */
-.flex button {
-    background-color: #646fd4;
-    color: #fff;
-    padding: 8px;
-    border-radius: 2px;
-    font-size: 16px;
-    font-family: "poppins", sans-serif;
-    text-decoration: none;
-}
 
-.flex button:hover {
-    background-color: #4cacbc;
-    color: #fff;
-    transition: 0.2s;
-}
-.text-center {
+.text-center{
     text-align: center;
     font-size: 20px;
 }
-.text-center a {
-    background-color: #646fd4;
+.text-center a{
+    background-color: #646FD4;
     color: #fff;
-    padding: 5px;
+    padding: 5px ;
     border-radius: 2px;
     font-size: 16px;
-    font-family: "poppins", sans-serif;
+    font-family: "poppins",sans-serif;
     text-decoration: none;
 }
-.text-center a:hover {
-    background-color: #4cacbc;
+.text-center a:hover{
+    background-color: #4CACBC;
     color: #fff;
-    transition: 0.2s;
+transition: 0.2s;
 }
-.mb-3 h1 {
+.mb-3 h1{
     text-align: center;
     padding: 10px;
 }
-.register_form-left {
+.register_form-left{
     float: left;
     width: 50%;
     padding-right: 20px;
 }
 
-.register_form-right {
+.register_form-right{
     float: right;
     width: 50%;
     padding-left: 20px;

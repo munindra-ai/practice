@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class LoginAlertNotification extends Notification
 {
     use Queueable;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**
@@ -29,6 +30,7 @@ class LoginAlertNotification extends Notification
      */
     public function via($notifiable)
     {
+
         return ['mail','database'];
     }
 
@@ -41,9 +43,16 @@ class LoginAlertNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Login Alert')
-                    ->action('Notification Action', url('/'))
+        
+                    ->line( 'Dear' .$notifiable->name )
+                    
+                    ->subject('Wrong Password Attempt Alert')
+                    ->line('Your account has been locked'  )
+                    ->line('Please Try again after 3 hour')
+                    
+                    // ->action('VISIT', url('/'))
                     ->line('Thank you for using our application!');
+                   
     }
 
     /**
@@ -56,6 +65,9 @@ class LoginAlertNotification extends Notification
     {
         return [
             'user'=>$notifiable,
+            $notifiable['is_account_Locked']=>0,
+            
+
             'message'=>"test alert".now()->toDateString()
         ];
     }

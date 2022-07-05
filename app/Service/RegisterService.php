@@ -5,6 +5,7 @@ namespace App\Service;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterUser;
 
 
 
@@ -14,8 +15,9 @@ class RegisterService{
     {
         
         try{
+           
         $data =new User([
-            'userid'  => $request['userid'],
+            'email'  => $request->email,
             'password' => bcrypt($request->password),
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
@@ -27,7 +29,6 @@ class RegisterService{
             'parent_country' => $request->parent_country,
             'parent_zip' => $request->parent_zip,
             'phone' => $request->phone,
-            'email' => $request->email,
             'spouse_first_name' => $request->spouse_first_name,
            'spouse_last_name' => $request->spouse_last_name,
            'child_first_name' => $request->child_first_name,
@@ -41,6 +42,7 @@ class RegisterService{
             'payment_status' => 'payment_pending',
             
         ]);
+       
         $data->save();
         return $data->id;
        

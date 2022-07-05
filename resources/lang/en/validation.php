@@ -93,7 +93,7 @@ return [
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
-    'password' => 'The password is incorrect.',
+    'password' => 'Enter Password ',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'The :attribute field is required.',
@@ -133,6 +133,13 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email'=>[
+            'required'=>'Email field cannot be empty',
+            'unique' => 'The mail u have entered is already taken'
+        ],
+        'password'=>[
+            'required'=>'Enter Password',
+        ]
     ],
 
     'recaptcha' => 'Please verify that you are a human!',
