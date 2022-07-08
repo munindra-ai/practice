@@ -22,34 +22,7 @@
 
             <div classs="ml-auto">
                 <ul class="flex items-center space-x-3">
-                    @guest
-                    @if(Route::currentRouteName() == 'register')
-                    <li>
-                        <a class="hover" href="{{ route('register') }}">Register</a>
-                    </li>
-                    @else
-                    <li>
-                        <!-- <span x-data="{ open: false }" x-init="() => { @if($errors->register->any()) open = true @endif }" @open-register-form.window="open = true" @hide-register-form.window="open = false">
-                            <button class="hover:underline" @click="open = true">Register</button>
-                            @include('auth.register-modal')
-                        </span> -->
-                        <a class="hover" href="{{ route('register') }}">Register</a>
-
-                    </li>
-                    @endif
-                    @if(Route::currentRouteName() == 'login')
-                    <li>
-                        <a class="hover" href="{{ route('login') }}">Login</a>
-                    </li>
-                    @else
-                    <li>
-                        <span x-data="{ open: false }" x-init="() => { @if($errors->login->any()) open = true @endif }" @open-login-form.window="open = true" @hide-login-form.window="open = false">
-                            <button class="hover" @click="open = true">Login</button>
-                            @include('auth.login-modal')
-                        </span>
-                    </li>
-                    @endif
-                    @endguest
+                   
 
                     
                     <li>
@@ -59,7 +32,43 @@
                         <a class="hover" href="/cart">My Cart</a>
                     </li>
 
-                    <button class="donate-btn"> Donate Us</button>
+                    <li>
+                    <button><a class="hover" href="{{route('donate')}}">Donate Us</a></button>
+                    <!-- <button class="donate-btn"> Donate Us</button> -->
+                    </li>
+
+                    @guest
+                    @if(Route::currentRouteName() == 'register')
+                    <li>
+                        <button><a class="hover" href="{{ route('register') }}">Register</a></button>
+                    </li>
+                    @else
+                    <li>
+                        {{-- <span x-data="{ open: false }" x-init="() => { @if($errors->register->any()) open = true @endif }" @open-register-form.window="open = true" @hide-register-form.window="open = false">
+                            <button class="hover:underline" @click="open = true">Register</button>
+                            @include('auth.register-modal')
+                        </span>--}}
+                            <button><a class="hover" href="{{ route('register') }}">Register</a></button>
+
+                    </li>
+                    @endif
+
+                    @if(Route::currentRouteName() == 'login')
+                    <li>
+                        <a class="hover" href="{{ route('login') }}">Login</a>
+                    </li>
+                    @else
+                    <li>
+                        <span x-data="{ open: false }" x-init="() => { @if($errors->login->any()) open = true @endif }" @open-login-form.window="open = true" @hide-login-form.window="open = false">
+                            <button class="hover" @click="open = true">Login</button>
+                            <!-- <button><a class="hover" @click="open = true" href="#">Login</a></button> -->
+                            @include('auth.login-modal')
+                        </span>
+                    </li>
+                    @endif
+                    @endguest
+
+                    
 
                     @auth
                     <li>

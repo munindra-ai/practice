@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMarkDownMail;
 
+Route::get('donate',function(){
+return view('frontend.donate');
+})->name('donate');
 
 Route::get('/', 'FrontendController@index')->name('home');
 

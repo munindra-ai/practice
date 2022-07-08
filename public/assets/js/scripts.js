@@ -28,6 +28,8 @@
 }
 
 
+
+
 //clock script
 const clocks = document.getElementsByClassName("clock");
 
@@ -100,37 +102,79 @@ $(document).ready(function($) {
 
 
 //Register Form Script
-
-$(function(){
-  $('#married').click(function(){
-    if($(this).is(':checked')){
-      $('#hidemarriedinfo').show();
-
-    }else{
-      $('#hidemarriedinfo').hide();
-    }
+// Check box 
+$('#terms_and_condition').click(function () {
+  //check if checkbox is checked
+  if ($(this).is(':checked')) {
+      
+      $('#btn-submit').removeAttr('disabled'); //enable input
+      
+  } else {
+      $('#btn-submit').attr('disabled', true); //disable input
+  }
   });
- });
- 
 
-
+  // Check box married
   $(function(){
-  $('#haschild').click(function(){
-    if($(this).is(':checked')){
-      $('#hidechildinfo').show();
+    $('#married').click(function(){
+      if($(this).is(':checked')){
+        $('#hidemarriedinfo').show();
+  
+      }else{
+        $('#hidemarriedinfo').hide();
+      }
+    });
+   });
+   
+ 
+  
+    $(function(){
+    $('#haschild').click(function(){
+      if($(this).is(':checked')){
+        $('#hidechildinfo').show();
+  
+      }else{
+        $('#hidechildinfo').hide();
+      }
+    });
+   });
+   $(function(){
+    $('#no').click(function(){
+      if($(this).is(':checked')){
+        $('#diffadress').show();
+  
+      }else{
+        $('#diffadress').hide();
+      }
+    });
+   });
 
-    }else{
-      $('#hidechildinfo').hide();
-    }
-  });
- });
- $(function(){
-  $('#no').click(function(){
-    if($(this).is(':checked')){
-      $('#diffadress').show();
 
-    }else{
-      $('#diffadress').hide();
-    }
-  });
- });
+//  Date Picker register form
+function ageCalculator() {
+  var userinput = document.getElementById("dob").value;
+  var dob = new Date(userinput);
+  if(userinput==null || userinput=='') {
+    document.getElementById("datePickerMessage").innerHTML = "**Choose a date please!";  
+    return false; 
+  } else {
+  
+  //calculate month difference from current date in time
+  var month_diff = Date.now() - dob.getTime();
+  
+  //convert the calculated difference in date format
+  var age_dt = new Date(month_diff); 
+  
+  //extract year from date    
+  var year = age_dt.getUTCFullYear();
+  
+  //now calculate the age of the user
+  var age = Math.abs(year - 1970);
+  
+  //display the calculated age
+  return document.getElementById("datePickerMessage").innerHTML =  
+         'Age is ' + age + " years.";
+  }
+}
+
+// Register form script end
