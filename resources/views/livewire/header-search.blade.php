@@ -1,4 +1,5 @@
 <div class="relative mx-auto w-full sm:w-5/12 md:w-7/12">
+    
     <form action="{{ route('frontend.products.index') }}" method="GET" class="flex">
         @csrf
         <div id="header-search" class="flex w-full text-sm">

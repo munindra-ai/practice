@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -13,7 +14,7 @@
 
     <div class="my-5"></div>
     
-   
+    
 
     <div class="container py-5">
         <section class="mb-4">
@@ -24,7 +25,7 @@
             </div>
             <div class="product-card grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3   gap-8">
                 
-                <section >
+                <section>
                 <div class="container py-5">
                     <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-4">
@@ -503,3 +504,4 @@
 
 
 @endsection
+
