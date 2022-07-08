@@ -58,9 +58,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->gateway = Omnipay::create('PayPal_Rest');
-        $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
-        $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
-        $this->gateway->setTestMode(true);
+        $this->gateway->setClientId(settings('paypal_client_id'));
+        $this->gateway->setSecret(settings('paypal_api_secret'));
+        $this->gateway->setTestMode(settings('paypal_enable_test_mode') == 'yes');
         $this->middleware('guest');
     }
 
@@ -108,7 +108,7 @@ class RegisterController extends Controller
                $response = $this->gateway->purchase(
             array(
                 "amount" => $request->registerAmount,   //$order->total_price,
-                'currency' => env('PAYPAL_CURRENCY'),
+                'currency' => settings('paypal_currency', 'USD'),
                 'returnUrl' => route('register.success',[$data]),
                 'cancelUrl' => route('register.cancel',[$data]),
             )
