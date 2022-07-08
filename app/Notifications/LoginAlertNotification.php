@@ -47,8 +47,7 @@ class LoginAlertNotification extends Notification
                     ->line( 'Dear' .$notifiable->name )
                     
                     ->subject('Wrong Password Attempt Alert')
-                    ->line('Your account has been locked'  )
-                    ->line('Please Try again after 3 hour')
+                    ->line('Your account has been locked Please Try again after 3 hour'  )
                     
                     // ->action('VISIT', url('/'))
                     ->line('Thank you for using our application!');

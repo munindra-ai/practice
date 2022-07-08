@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
        'parent_country','parent_zip','phone','email','spouse_first_name','spouse_last_name', 'child_first_name','child_last_name','child_age',
        'child_address','child_city','child_state','child_country','child_zip',
         'password', 'provider', 'provider_id', 'avatar', 'mobile', 'address',
-        'gender', 'role'
+        'gender', 'role','image','avatars',
     ];
 
     /**

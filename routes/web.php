@@ -7,6 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\MailController;
 use App\Service\RegisterService;
 use App\Http\Controllers\PaymentRegisterController;
@@ -40,6 +41,7 @@ Route::get('/user/account', 'UserAccountController@index')->name('frontend.user.
 // Profile routes
 Route::get('profile', 'UserController@profile')->name('user.profile');
 Route::put('profile/update/{user}', 'UserController@updateProfile')->name('user.profile.update');
+// Route::post('profile','UserController@update_avatar');
 
 // Product routes
 Route::get('products', 'ProductController@index')->name('frontend.products.index');

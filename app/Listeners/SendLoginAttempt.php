@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\SomeoneLoginAttempt;
 use App\Jobs\SendLoginAttemptJobs;
+use App\Mail\LoginAlert;
 use App\Mail\SendMarkDownMail;
 use App\Mail\WelcomeEmail;
 use App\Mail\WelcomeMail;
@@ -43,7 +44,8 @@ class SendLoginAttempt
     public function handle(SomeoneLoginAttempt $event )
     {
         if ($user = User::where('email', $event->request->email)->first()) {
-            $user->notify(new LoginAlertNotification($user->email));
+            Mail::to($user)->send(new LoginAlert($user->email,$user->name,$user->locked_time));
+            // $user->notify(new LoginAlertNotification($user->email));
             $user['is_account_Locked'] ='0';
             $user->save();
         }

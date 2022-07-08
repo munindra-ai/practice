@@ -9,6 +9,7 @@
     <x-slot name="heading">
         <h4 class="text-xl text-gray-800 leading-relaxed tracking-wide font-medium mb-3 font-poppins">{{ $heading }}</h4>
     </x-slot>
+    
 
     <div class="bg-white my-3">
         <ul class="flex flex-col divide-y font-lato">

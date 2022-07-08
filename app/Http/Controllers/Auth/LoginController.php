@@ -62,7 +62,7 @@ class LoginController extends Controller
 
     protected function validateLogin(Request $request)
     {
-        
+
         $request->validateWithBag('login', [
             $this->username() => 'required|string|exists:users',
             'password' => 'required|string',
@@ -143,12 +143,11 @@ class LoginController extends Controller
             'attempts' => 'Attempt ' . $this->limiter()->attempts($this->throttleKey($request)),
             'attempts1' => 'remaining attempt ' . (int)3 - $this->limiter()->attempts($this->throttleKey($request)),
         ])->redirectTo('/login');
-        
     }
     protected function authenticated(Request $request, $user)
     {
-       
-       
+
+
         session()->forget('login.attempts'); // clear attempts
-}
+    }
 }
