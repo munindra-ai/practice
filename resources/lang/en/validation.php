@@ -134,7 +134,7 @@ return [
             'rule-name' => 'custom-message',
         ],
         'email'=>[
-            'required'=>'Email field cannot be empty',
+            'required'=>'Enter :attribute',
             'unique' => 'The mail u have entered is already taken'
         ],
         'password'=>[

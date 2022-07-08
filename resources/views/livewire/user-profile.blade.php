@@ -3,7 +3,8 @@
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
             <div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
+                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                </svg></div>
             <div>
                 <p class="font-bold">Your profile has been updated</p>
                 <p class="text-sm">Make sure you know how these changes affect you.</p>
@@ -12,6 +13,46 @@
     </div>
     @endif
     <form wire:submit.prevent="updateProfile">
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
+                <div class="card-body">
+                    <form action="{{route('home')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="image">
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <img src="/uploads/avatars/{{ $user->avatars }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+                    <h2>{{ $user->name }}'s Profile</h2>
+                    <form wire:submit.prevent="update_avatar" enctype="multipart/form-data" action="/profile" method="POST" >
+                        <label>Update Profile Image</label>
+                        <input type="file" name="avatar">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="pull-right btn btn-sm btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div> -->
         <div>
             <label class="block mb-2">Name</label>
             <input wire:model="user.name" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">

@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                         <li class="breadcrumb-item active">{{ $user->name }}</li>
                     </ol>
@@ -22,6 +22,7 @@
     <div>
         @include('alerts.all')
     </div>
+
 
     <div class="row">
         <div class="col-md-6">
@@ -38,6 +39,7 @@
                                     <x-fields.input name="name" :value="old('name', $user->name)" />
                                 </x-form.form-group>
                             </div>
+
                             <div class="col-md-6">
                                 <x-form.form-group>
                                     <x-form.label class="required">Email</x-form.label>

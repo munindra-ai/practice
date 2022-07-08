@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -51,4 +52,21 @@ class UserController extends Controller
 
 		return back()->with('success', 'Profile updated successfully.');
 	}
+	public function update_avatar(Request $request){
+		if($request->hasFile('avatars')){
+    		$avatars = $request->file('avatars');
+			$file = $request->file('image');
+    		$filename = time() . '.' . $avatars->getClientOriginalExtension();
+			$path = public_path().'/uploads/avatars/';
+			$uplaod = $file->move($path,$filename);
+			return $filename;
+    		Image::make($avatars)->resize(300, 300)->save( public_path('/src/uploads/avatars/' . $filename ) );
+
+    		$user = Auth::user();
+    		$user->avatars = $filename;
+    		$user->save();
+
+	}
+	return view('livewire.user-profile', array('user' => Auth::user()) );
+}
 }
