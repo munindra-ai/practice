@@ -817,12 +817,12 @@
     @endif --}}
 
     {{-- Button --}}
-    <div class="flex flex-wrap">
+    {{-- <div class="flex flex-wrap">
         <button type="submit" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 hover:shadow-lg text-gray-100 font-semibold py-2 px-6 rounded-sm focus:outline-none focus:shadow-outline focus:bg-purple-700 tracking-wider uppercase">
             {{ __('Register') }}
         </button>
     </div>
- 
+  --}}
     
     
       
