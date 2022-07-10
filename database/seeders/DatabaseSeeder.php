@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             SettingsSeeder::class,
             DefaultGeneralSettingsSeeder::class,
-            DefaultFooterSettingsSeeder::class
+            DefaultFooterSettingsSeeder::class,
+            SideMenuSeeder::class
         ]);
     }
 }

@@ -9,7 +9,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\MailController;
-use App\Service\RegisterService;
 use App\Http\Controllers\PaymentRegisterController;
 use App\Mail\LoginAlert;
 use App\Mail\WelcomeEmail;
@@ -19,6 +18,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMarkDownMail;
+use App\Http\Controllers\SideMenuController;
 
 Route::get('donate',function(){
 return view('frontend.donate');
@@ -114,5 +114,6 @@ Route::get('/notification',function(){
         //     ->send(new SendMarkDownMail());
     // })->delay(now()->addSecond(10));
     echo "mail sent";
-
+    
 });
+Route::get('/sidebar', 'SideMenuController@getMenu')->name('sidebar');
