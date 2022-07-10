@@ -26,7 +26,7 @@ class AddLockedTimeToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('locked_time')->default(3);
+            $table->dropColumn('locked_time')->default(3);
         });
     }
 }

@@ -39,6 +39,8 @@ class CreateUsersTable extends Migration
             $table->string('child_country')->nullable();
             $table->string('child_zip')->nullable();
             $table->enum('payment_status',['payment_pending','payment_done'])->default('Payment_pending');
+            $table->string( 'paypal_transaction_id')->nullable();
+            $table->boolean('is_terms_and_conditions_aggreed')->default(1);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
             // $table->string('avatar')->nullable();
@@ -46,7 +48,7 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             // $table->string('role')->nullable()->default('customer');
             $table->integer('spam_count')->nullable()->default(0);
-            $table->string( 'paypal_transaction_id')->nullable();
+            // $table->string( 'paypal_transaction_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

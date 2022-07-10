@@ -26,7 +26,7 @@ class AddAvatarToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatars')->default('default.jpg');
+            $table->dropColumn('avatars')->default('default.jpg');
         });
     }
 }
