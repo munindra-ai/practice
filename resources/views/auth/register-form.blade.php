@@ -27,7 +27,7 @@
                         <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="firstname" placeholder="First Name" >
                     </div>
                     @error('firstname')
-                    <p class="text-red-500 text-l mt-2">
+                    <p class="text-red-500 text-xs mt-2">
                         {{$message}} 
                     </p>
                     @enderror
@@ -45,7 +45,7 @@
                         <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="email" value="{{ old('email') }}" placeholder="Email" >
                     </div>
                 @error('email')
-                <p class="text-red-500 text-l mt-2">
+                <p class="text-red-500 text-xs mt-2" style="margin-bottom: 5px">
                     {{$message}} 
                 </p>
                 @enderror
@@ -72,7 +72,7 @@
                     <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="lastname" placeholder="Last Name">
                 </div>
                 @error('lastname')
-                <p class="text-red-500 text-l mt-2">
+                <p class="text-red-500 text-xs mt-2">
                 {{$message}} 
                 </p>
                 @enderror
@@ -99,7 +99,7 @@
                 </div>
             </div>
             @error('password')
-            <p class="text-red-500 text-l mt-2">
+            <p class="text-red-500 text-xs mt-2">
             {{$message}} 
             </p>
             @enderror
@@ -119,7 +119,7 @@
                     </div>
                     <span id = "datePickerMessage"> </span>
                     @error('dob')
-                    <p class="text-red-500 text-l mt-2">
+                    <p class="text-red-500 text-xs mt-2">
                     {{$message}} 
                     </p>
                     @enderror
@@ -408,7 +408,7 @@
                     <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_city" placeholder="City name">
                 </div>
                 @error('parent_city')
-                <p class="text-red-500 text-l mt-2">
+                <p class="text-red-500 text-xs mt-2">
                 {{$message}} 
                 </p>
                 @enderror
@@ -435,7 +435,7 @@
                 <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_state" placeholder="State">
             </div>
             @error('parent_state')
-            <p class="text-red-500 text-l mt-2">
+            <p class="text-red-500 text-xs mt-2">
             {{$message}} 
             </p>
             @enderror
@@ -452,7 +452,7 @@
                 <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_address" placeholder="Your address">
             </div>
             @error('parent_address')
-            <p class="text-red-500 text-l mt-2">
+            <p class="text-red-500 text-xs mt-2">
             {{$message}} 
             </p>
             @enderror
@@ -471,7 +471,7 @@
                     <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_apt" placeholder="Your apartment name">
                 </div>
                 @error('parent_apt')
-                <p class="text-red-500 text-l mt-2">
+                <p class="text-red-500 text-xs mt-2">
                 {{$message}} 
                 </p>
                 @enderror
@@ -494,7 +494,7 @@
                         <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="parent_zip" placeholder="Zip">
                     </div>
                 @error('parent_zip')
-                            <p class="text-red-500 text-l mt-2">
+                            <p class="text-red-500 text-xs mt-2">
                                 {{$message}} 
                             </p>
                 @enderror
@@ -517,7 +517,7 @@
                 <input class="w-full p-1 bg-transparent placeholder-purple-900 placeholder-opacity-75 text-sm font-medium autofill-transparent" type="text" name="phone" placeholder="Your Contact number">
             </div>
             @error('phone')
-            <p class="text-red-500 text-l mt-2">
+            <p class="text-red-500 text-xs mt-2">
             {{$message}} 
             </p>
             @enderror
@@ -708,7 +708,7 @@
 
 <div class="col-12">
         <div class="form-check">
-          <input class="form-check-input" value="1" type="checkbox" id="terms_and_condition" checked>
+          <input class="form-check-input" value="1" type="checkbox" id="terms_and_condition">
           <label class="form-check-label" for="gridCheck">
             By clicking this u agree on the terms and condition of the site
           </label>
@@ -718,7 +718,7 @@
 
       {{-- Button --}}
     <div class="flex flex-wrap">
-        <button type="submit" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 hover:shadow-lg text-gray-100 font-semibold py-2 px-6 rounded-sm focus:outline-none focus:shadow-outline focus:bg-purple-700 tracking-wider uppercase"  id="btn-submit" >
+        <button type="submit" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 hover:shadow-lg text-gray-100 font-semibold py-2 px-6 rounded-sm focus:outline-none focus:shadow-outline focus:bg-purple-700 tracking-wider uppercase"  id="btn-submit" disabled>
             {{ __('Register') }}
         </button>
     </div>

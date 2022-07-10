@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterUser;
-
+use App\Helpers\Helper;
 
 
 class RegisterService{
@@ -15,7 +15,7 @@ class RegisterService{
     {
         
         try{
-           
+            $request->unique_identification_number = Helper::IDGenereator(new User, 'unique_identification_number',5,'72815');
         $data =new User([
             'email'  => $request->email,
             'password' => bcrypt($request->password),
@@ -40,6 +40,7 @@ class RegisterService{
             'child_country' => $request->child_country,
             'child_zip' => $request->child_zip,
             'payment_status' => 'payment_pending',
+            'unique_identification_number' =>  $request->unique_identification_number,
             
         ]);
        
