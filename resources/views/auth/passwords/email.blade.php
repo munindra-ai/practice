@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="flex flex-wrap items-center">
-                    <button type="submit" class="bg-theme-red hover:bg-red-700 text-gray-100 font-semibold py-2 px-5 rounded-sm focus:outline-none focus:shadow-outline">
+                    <button type="submit" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 hover:shadow-lg text-gray-100 font-semibold py-2 px-6 rounded-sm focus:outline-none focus:shadow-outline focus:bg-purple-700 tracking-wider uppercase">
                         {{ __('Send Password Reset Link') }}
                     </button>
                 </div>
