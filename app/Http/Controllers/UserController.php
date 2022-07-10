@@ -38,35 +38,38 @@ class UserController extends Controller
 			return back()->with('error', 'Permission denied.');
 		}
 
-		$request->validate([
-			'name' => 'required',
-			'mobile' => 'required',
-			'email' => 'required|email|max:255|exists:users',
-		]);
-
+		$request->validate(
+			[
+				'name' => 'required',
+				'mobile' => 'required',
+				'email' => 'required|email|max:255|exists:users',
+				'profile' => 'required|image|mimes: jpg,jpeg,png,PNG',
+			],
+			[
+				//custom error message shown garna ko lagi 
+				'profile.image' => 'Image should be jpg,jpeg,png'
+			]
+		);
+		$user = new User() ;
+		if ($request->hasfile('profile')) {
+			$image = $request->file('profile');
+			$imgname = $image->getClientOriginalName();
+			$dbname = $fileName;
+		}
 		$user->name = $request->name;
 		$user->mobile = $request->mobile;
 		$user->address = $request->address;
 		$user->gender = $request->gender;
+		// $user->profile= $request->profile;
+		
+		$user->profile = $dbname; //databse ma store huncha
 		$user->update();
 
+	
+
 		return back()->with('success', 'Profile updated successfully.');
-	}
-	public function update_avatar(Request $request){
-		if($request->hasFile('avatars')){
-    		$avatars = $request->file('avatars');
-			$file = $request->file('image');
-    		$filename = time() . '.' . $avatars->getClientOriginalExtension();
-			$path = public_path().'/uploads/avatars/';
-			$uplaod = $file->move($path,$filename);
-			return $filename;
-    		Image::make($avatars)->resize(300, 300)->save( public_path('/src/uploads/avatars/' . $filename ) );
 
-    		$user = Auth::user();
-    		$user->avatars = $filename;
-    		$user->save();
 
+	
 	}
-	return view('livewire.user-profile', array('user' => Auth::user()) );
-}
 }
