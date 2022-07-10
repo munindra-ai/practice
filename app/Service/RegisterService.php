@@ -43,7 +43,7 @@ class RegisterService{
             'unique_identification_number' =>  $request->unique_identification_number,
             
         ]);
-       
+   
         $data->save();
         return $data->id;
        

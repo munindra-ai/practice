@@ -104,7 +104,6 @@ class RegisterController extends Controller
                 $validator->errors()->toJson();
             }  
             $data=$register->createUser($request);
-           
                $response = $this->gateway->purchase(
             array(
                 "amount" => $request->registerAmount,   //$order->total_price,
@@ -140,14 +139,13 @@ public function registerSuccess(Request $request)
                     'register_id'          => $request->id
                 ));     
                 $response = $transaction->send();  
-             
+           
 
                 // dd($response,$request->id);
                 if ($response->isSuccessful()) {
                     $user['paypal_transaction_id'] = $request->payerId;
                    $user["payment_status"]='payment_done';
                     $user->save(); 
-   
                     \Mail::to($user->email)->send(new \App\Mail\RegisterMail($user->email));   
                    session()->flash('successAlert','successfully registered '.$user->email);
                    return redirect('login');

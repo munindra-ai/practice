@@ -60,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
         $uiAvatar = http_build_query([
-            'd' => 'https://ui-avatars.com/api/' . $this->attributes['name'] . '/128&background=2e88e1&color=fff']);
+            'd' => 'https://ui-avatars.com/api/' . $this->attributes['firstname']. '/128&background=2e88e1&color=fff']);
         return "http://www.gravatar.com/avatar/$hash?s=260&d=mp&" . $uiAvatar;
     }
 
