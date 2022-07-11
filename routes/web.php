@@ -41,7 +41,8 @@ Route::get('/user/account', 'UserAccountController@index')->name('frontend.user.
 // Profile routes
 Route::get('profile', 'UserController@profile')->name('user.profile');
 Route::put('profile/update/{user}', 'UserController@updateProfile')->name('user.profile.update');
-// Route::post('profile','UserController@update_avatar');
+Route::post('upload','UserController@store');
+Route::post('profile','UserController@update_avatar');
 
 // Product routes
 Route::get('products', 'ProductController@index')->name('frontend.products.index');

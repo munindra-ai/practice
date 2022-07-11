@@ -1,4 +1,15 @@
 <div>
+    <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
+    <form enctype="multipart/form-data" action="/profile" method="POST">
+        <label>Select Image: </label>
+        <input type="file" name="avatar">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
+    <x-tailwind-invalid-feedback field="user.profile" /> -->
+        <input type="submit" class="pull-right btn btn-sm btn-primary">
+</div>
+</form>
+<div>
     @if($profileUpdated)
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
@@ -12,47 +23,8 @@
         </div>
     </div>
     @endif
-    <form wire:submit.prevent="updateProfile">
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-                <div class="card-body">
-                    <form action="{{route('home')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="image">
-                        <input type="submit" value="Upload">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <img src="/uploads/avatars/{{ $user->avatars }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-                    <h2>{{ $user->name }}'s Profile</h2>
-                    <form wire:submit.prevent="update_avatar" enctype="multipart/form-data" action="/profile" method="POST" >
-                        <label>Update Profile Image</label>
-                        <input type="file" name="avatar">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="pull-right btn btn-sm btn-primary">
-                    </form>
-                </div>
-            </div>
-        </div> -->
+    <form wire:submit.prevent="updateProfile" method="POST" enctype="multipart/form-data">
+        @csrf
         <div>
             <label class="block mb-2">Name</label>
             <input wire:model="user.name" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">

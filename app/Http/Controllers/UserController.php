@@ -22,6 +22,7 @@ class UserController extends Controller
 	{
 		$user = Auth::user();
 		$heading = 'My Profile';
+		
 
 		return view('frontend.user.profile', compact([
 			'user',
@@ -37,36 +38,64 @@ class UserController extends Controller
 			$authUser->update();
 			return back()->with('error', 'Permission denied.');
 		}
+		// if ($request->hasfile('avatar')){
 
-		$request->validate([
-			'name' => 'required',
-			'mobile' => 'required',
-			'email' => 'required|email|max:255|exists:users',
-		]);
+		// 	$avatar=$request->file('avatar');
+		// 	$name= time().'.'.$avatar->getClientOriginalExtension();
+		// 	$filename='/avatars/'.$name;
+		// 	Image::make($avatar)->resize(300,300)->store('slider_images', 'sliders');
+		// 	// save(public_path('/uploads/'.$filename));
+		// 	$user=Auth::user();
+		// 	$user->avatar= $filename;
+		// }
+		// $user->save();
 
+		$request->validate(
+			[
+				'name' => 'required',
+				'mobile' => 'required',
+				'email' => 'required|email|max:255|exists:users',
+				'avatar' => 'required|image|mimes: jpg,jpeg,png,PNG',
+			],
+			[
+				//custom error message shown garna ko lagi 
+				'avatar.image' => 'Image should be jpg,jpeg,png'
+			]
+		);
 		$user->name = $request->name;
 		$user->mobile = $request->mobile;
 		$user->address = $request->address;
 		$user->gender = $request->gender;
 		$user->update();
 
+	
+
 		return back()->with('success', 'Profile updated successfully.');
+
+
+	
 	}
+	
 	public function update_avatar(Request $request){
-		if($request->hasFile('avatars')){
-    		$avatars = $request->file('avatars');
-			$file = $request->file('image');
-    		$filename = time() . '.' . $avatars->getClientOriginalExtension();
-			$path = public_path().'/uploads/avatars/';
-			$uplaod = $file->move($path,$filename);
-			return $filename;
-    		Image::make($avatars)->resize(300, 300)->save( public_path('/src/uploads/avatars/' . $filename ) );
+		$user = Auth::user();
+		$heading = 'My Profile';
+		if ($request->hasfile('avatar')){
 
-    		$user = Auth::user();
-    		$user->avatars = $filename;
-    		$user->save();
+			$avatar=$request->file('avatar');
+			$name= time().'.'.$avatar->getClientOriginalExtension();
+			$filename='/avatars/'.$name;
+			Image::make($avatar)->resize(300,300)->save(public_path('/uploads/'.$filename));
+			$user=Auth::user();
+			$user->avatar= $filename;
+		}
+		
+		$user->save();
+		
 
+		return view('frontend.user.profile', compact([
+			'user',
+			'heading'
+		]));
+		
 	}
-	return view('livewire.user-profile', array('user' => Auth::user()) );
-}
 }

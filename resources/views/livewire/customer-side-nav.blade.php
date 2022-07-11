@@ -1,5 +1,5 @@
 <div class="flex items-center space-x-4 p-2 mb-5 border border-dashed rounded">
-    <img class="h-12 rounded-full" src="{{ $user->gravatar }}" alt="{{ $user->name }}">
+    <img class="h-12 rounded-full" src="/uploads{{Auth::user()->avatar }}" alt="{{ $user->name }}">
     <div>
         <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{ $user->name }}</h4>
         <span class="text-sm tracking-wide flex items-center space-x-1">
