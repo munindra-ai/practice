@@ -1,4 +1,15 @@
 <div>
+    <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
+    <form enctype="multipart/form-data" action="/profile" method="POST">
+        <label>Select Image: </label>
+        <input type="file" name="avatar">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
+    <x-tailwind-invalid-feedback field="user.profile" /> -->
+        <input type="submit" class="pull-right btn btn-sm btn-primary">
+</div>
+</form>
+<div>
     @if($profileUpdated)
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
@@ -14,11 +25,6 @@
     @endif
     <form wire:submit.prevent="updateProfile" method="POST" enctype="multipart/form-data">
         @csrf
-        <div>
-            <label class="block mb-2">Select Image: </label>
-            <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror">
-            <x-tailwind-invalid-feedback field="user.profile" />
-        </div>
         <div>
             <label class="block mb-2">Name</label>
             <input wire:model="user.name" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">

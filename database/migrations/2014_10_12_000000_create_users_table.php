@@ -41,7 +41,7 @@ class CreateUsersTable extends Migration
             $table->enum('payment_status',['payment_pending','payment_done'])->default('Payment_pending');
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            // $table->string('avatar')->nullable();
+            $table->string('avatar')->nullable();
             // $table->string('address')->nullable();
             $table->string('gender')->nullable();
             // $table->string('role')->nullable()->default('customer');

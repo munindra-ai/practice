@@ -9,6 +9,7 @@ use Livewire\WithFileUploads;
 class UserProfile extends Component
 {
     use WithFileUploads;
+    public $avatar;
     public $user;
     public $profileUpdated = false;
     protected $rules =
@@ -16,7 +17,7 @@ class UserProfile extends Component
         'user.name' => 'required',
         'user.mobile' => 'required|min:10',
         'user.gender' => 'required',
-        'user.profile'=>'required',
+        'avatar'=>'required',
     ];
 
     public function mount(User $user)

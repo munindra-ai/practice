@@ -22,6 +22,7 @@ class UserController extends Controller
 	{
 		$user = Auth::user();
 		$heading = 'My Profile';
+		
 
 		return view('frontend.user.profile', compact([
 			'user',
@@ -37,32 +38,34 @@ class UserController extends Controller
 			$authUser->update();
 			return back()->with('error', 'Permission denied.');
 		}
+		// if ($request->hasfile('avatar')){
+
+		// 	$avatar=$request->file('avatar');
+		// 	$name= time().'.'.$avatar->getClientOriginalExtension();
+		// 	$filename='/avatars/'.$name;
+		// 	Image::make($avatar)->resize(300,300)->store('slider_images', 'sliders');
+		// 	// save(public_path('/uploads/'.$filename));
+		// 	$user=Auth::user();
+		// 	$user->avatar= $filename;
+		// }
+		// $user->save();
 
 		$request->validate(
 			[
 				'name' => 'required',
 				'mobile' => 'required',
 				'email' => 'required|email|max:255|exists:users',
-				'profile' => 'required|image|mimes: jpg,jpeg,png,PNG',
+				'avatar' => 'required|image|mimes: jpg,jpeg,png,PNG',
 			],
 			[
 				//custom error message shown garna ko lagi 
-				'profile.image' => 'Image should be jpg,jpeg,png'
+				'avatar.image' => 'Image should be jpg,jpeg,png'
 			]
 		);
-		$user = new User() ;
-		if ($request->hasfile('profile')) {
-			$image = $request->file('profile');
-			$imgname = $image->getClientOriginalName();
-			$dbname = $fileName;
-		}
 		$user->name = $request->name;
 		$user->mobile = $request->mobile;
 		$user->address = $request->address;
 		$user->gender = $request->gender;
-		// $user->profile= $request->profile;
-		
-		$user->profile = $dbname; //databse ma store huncha
 		$user->update();
 
 	
@@ -71,5 +74,28 @@ class UserController extends Controller
 
 
 	
+	}
+	
+	public function update_avatar(Request $request){
+		$user = Auth::user();
+		$heading = 'My Profile';
+		if ($request->hasfile('avatar')){
+
+			$avatar=$request->file('avatar');
+			$name= time().'.'.$avatar->getClientOriginalExtension();
+			$filename='/avatars/'.$name;
+			Image::make($avatar)->resize(300,300)->save(public_path('/uploads/'.$filename));
+			$user=Auth::user();
+			$user->avatar= $filename;
+		}
+		
+		$user->save();
+		
+
+		return view('frontend.user.profile', compact([
+			'user',
+			'heading'
+		]));
+		
 	}
 }
