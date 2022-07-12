@@ -1,3 +1,5 @@
+
+<div>
 <div>
     <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
     <form enctype="multipart/form-data" action="/profile" method="POST">
@@ -9,7 +11,6 @@
         <input type="submit" class="pull-right btn btn-sm btn-primary">
 </div>
 </form>
-<div>
     @if($profileUpdated)
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
@@ -23,7 +24,7 @@
         </div>
     </div>
     @endif
-    <form wire:submit.prevent="updateProfile" method="POST" enctype="multipart/form-data">
+    <form wire:submit.prevent="updateProfile" method="POST">
         @csrf
         <div>
             <label class="block mb-2">Name</label>
@@ -61,4 +62,5 @@
             <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white text-lg py-2 px-5 rounded my-3 hover:shadow focus:outline-none focus:shadow-outline">Save</button>
         </div>
     </form>
+   
 </div>

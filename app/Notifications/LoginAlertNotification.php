@@ -64,7 +64,7 @@ class LoginAlertNotification extends Notification
     {
         return [
             'user'=>$notifiable,
-            $notifiable['is_account_Locked']=>0,
+            $notifiable['is_account_locked']=>0,
             
 
             'message'=>"test alert".now()->toDateString()
