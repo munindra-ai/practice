@@ -1,22 +1,9 @@
-
 <div>
-<div>
-    <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
-    <form enctype="multipart/form-data" action="/profile" method="POST">
-        <label>Select Image: </label>
-        <input type="file" name="avatar">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
-    <x-tailwind-invalid-feedback field="user.profile" /> -->
-        <input type="submit" class="pull-right btn btn-sm btn-primary">
-</div>
-</form>
     @if($profileUpdated)
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
             <div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
-                </svg></div>
+                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
             <div>
                 <p class="font-bold">Your profile has been updated</p>
                 <p class="text-sm">Make sure you know how these changes affect you.</p>
@@ -24,8 +11,7 @@
         </div>
     </div>
     @endif
-    <form wire:submit.prevent="updateProfile" method="POST">
-        @csrf
+    <form wire:submit.prevent="updateProfile">
         <div>
             <label class="block mb-2">Name</label>
             <input wire:model="user.name" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">
@@ -62,5 +48,4 @@
             <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white text-lg py-2 px-5 rounded my-3 hover:shadow focus:outline-none focus:shadow-outline">Save</button>
         </div>
     </form>
-   
 </div>
