@@ -14,17 +14,24 @@ class SideMenuSeeder extends Seeder
     public function run()
     {
         $menus = [
-            ['side_menu_title' => 'Home', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/'],
-            ['side_menu_title' => 'Pages', 'parent_id' => 0, 'sort_order' => 1, 'slug' => '/pages'],
-            ['side_menu_title' => 'Our Services', 'parent_id' => 2, 'sort_order' => 2, 'slug' => '/our-services'],
-            ['side_menu_title' => 'About', 'parent_id' => 2, 'sort_order' => 3, 'slug' => '/about'],
-            ['side_menu_title' => 'About Team', 'parent_id' => 4, 'sort_order' => 3, 'slug' => '/about-team'],
-            ['side_menu_title' => 'About Clients', 'parent_id' => 4, 'sort_order' => 3, 'slug' => '/about-clients'],
-            ['side_menu_title' => 'Contact Team', 'parent_id' => 5, 'sort_order' => 3, 'slug' => '/contact-team'],
-            ['side_menu_title' => 'Contact Clients', 'parent_id' => 6, 'sort_order' => 3, 'slug' => '/contact-clients'],
-            ['side_menu_title' => 'Contact', 'parent_id' => 2, 'sort_order' => 4, 'slug' => '/contact'],
-            ['side_menu_title' => 'Portfolio', 'parent_id' => 2, 'sort_order' => 4, 'slug' => '/portfolio'],
-            ['side_menu_title' => 'Gallery', 'parent_id' => 2, 'sort_order' => 4, 'slug' => '/gallery']
+            ['side_menu_title' => 'Library Management System', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/library_management_system'],
+            ['side_menu_title' => 'Learning Management System', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/learning_management_system'],
+            ['side_menu_title' => 'Event Booking System', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/event_booking_system'],
+            ['side_menu_title' => 'Inventory Management System', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/inventory_management_system'],
+            ['side_menu_title' => 'User Management', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/user_management'],
+            ['side_menu_title' => 'Gurukul Management', 'parent_id' => 0, 'sort_order' => 0, 'slug' => '/gurukul_management'],
+            ['side_menu_title' => 'Library Setting', 'parent_id' => 1, 'sort_order' => 2, 'slug' => '/library_setting'],
+            ['side_menu_title' => 'Book Category', 'parent_id' => 7, 'sort_order' => 3, 'slug' => '/book_category'],
+            ['side_menu_title' => 'Lecture Notes', 'parent_id' => 2, 'sort_order' => 3, 'slug' => '/lecture_notes'],
+            ['side_menu_title' => 'Upload Lecture Note', 'parent_id' => 9, 'sort_order' => 3, 'slug' => '/upload_lecture_note'],
+            ['side_menu_title' => 'Event Information', 'parent_id' => 3, 'sort_order' => 3, 'slug' => '/event_information'],
+            ['side_menu_title' => 'Event', 'parent_id' => 11, 'sort_order' => 3, 'slug' => '/event'],
+            ['side_menu_title' => 'Inventory Setting', 'parent_id' => 4, 'sort_order' => 3, 'slug' => '/inventory_setting'],
+            ['side_menu_title' => 'Item Group', 'parent_id' => 13, 'sort_order' => 4, 'slug' => '/item_group'],
+            ['side_menu_title' => 'User Information', 'parent_id' => 5, 'sort_order' => 4, 'slug' => '/user_information'],
+            ['side_menu_title' => 'User', 'parent_id' => 15, 'sort_order' => 4, 'slug' => '/user'],
+            ['side_menu_title' => 'Gurukul Information', 'parent_id' => 6, 'sort_order' => 4, 'slug' => '/gurukul_information'],
+            ['side_menu_title' => 'Gurukul', 'parent_id' => 17, 'sort_order' => 4, 'slug' => '/gurukul'],
         ];
         foreach ($menus as $menu) {
             \App\Role::Create($menu);
