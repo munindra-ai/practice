@@ -6,11 +6,11 @@
     <x-slot name="mobileHeading">
         <x-frontend.partials.account-navigator :heading="$heading" />
     </x-slot>
-    <?php 
+        
+   <?php 
    $name = $user->name;
    $dob = $user->dob;
-   $image=$user->avatar;
-   $data = 'name = ' . $name .' '. ' age = ' . $dob  ;
+   $data = 'name : ' . $name .' '. ' age : ' . $dob ;
    ?>
 
          <div class="card">
@@ -19,8 +19,10 @@
                 <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(600)->generate($data)) !!} ">
                 
             </div>
-        </div>
-        
+        </div> 
+        <div>
+
+    
     
 
     <x-slot name="heading">

@@ -26,6 +26,7 @@ class UsersList extends Component
         'user.name' => 'nullable',
         'user.email' => 'nullable',
         'user.role' => 'nullable',
+        'user.avatar'=>'nullable',
     ];
 
     public function save()

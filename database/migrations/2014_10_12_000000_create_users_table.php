@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_terms_and_conditions_aggreed')->default(1);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            // $table->string('avatar')->nullable();
+            $table->string('avatar')->nullable();
             // $table->string('address')->nullable();
             $table->string('gender')->nullable();
             // $table->string('role')->nullable()->default('customer');

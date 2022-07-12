@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -19,12 +20,13 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
+    protected $table='users';
     protected $fillable = [
        'userid' ,'firstname','lastname','dob','parent_address','parent_apt','parent_city','parent_state',
        'parent_country','parent_zip','phone','email','spouse_first_name','spouse_last_name', 'child_first_name','child_last_name','child_age',
        'child_address','child_city','child_state','child_country','child_zip',
         'password', 'provider', 'provider_id', 'avatar', 'mobile', 'unique_identification_number','address',
-        'gender', 'role','image','avatars',
+        'gender', 'role','image','avatars','profile',
     ];
 
     /**
@@ -112,5 +114,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function purchasedProducts()
     {
         return $this->hasMany('App\PurchasedProduct');
+    }
+    public function getImageUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->profile);
     }
 }
