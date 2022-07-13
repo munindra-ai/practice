@@ -14,7 +14,7 @@ return [
     */
     'users' => [
         [
-            'firstname' => 'saugat pandey',
+            'firstname' => 'saugat',
             'email' => 'saugat@gmail.com',
             'password' => 'password',
             'roles' => ['super-admin']
