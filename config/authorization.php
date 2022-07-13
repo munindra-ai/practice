@@ -15,21 +15,18 @@ return [
     'users' => [
         [
             'firstname' => 'saugat ',
-            // 'lastname '=>'pandey',
             'email' => 'saugat@gmail.com',
             'password' => 'password',
             'roles' => ['super-admin']
         ],
         [
             'firstname' => 'Admin',
-            // 'lastname' =>'Admin',
             'email' => 'admin@makalu.com',
             'password' => 'password',
             'roles' => ['admin']
         ],
         [
             'firstname' => 'John',
-            // 'lastname' => 'Doe',
             'email' => 'john@example.com',
             'password' => 'password',
             'roles' => ['customer']
