@@ -36,10 +36,11 @@ class RolesSeeder extends Seeder
             // $newUser = User::whereEmail($user['email'])->first() ??  new User();
             $newUser = User::firstOrCreate(
                 [
-                    'email' => $user['email']
+                    'email' => $user['email'],
+                    
                 ],
                 [
-                    'firstname' => 'saugat pandey',
+                    'firstname' => $user['firstname'],
                     'password' => bcrypt('password'),
                     'remember_token' => Str::random(10),
                     'unique_identification_number' =>Helper::IDGenereator(new User, 'unique_identification_number',5,'72815'),
@@ -52,7 +53,7 @@ class RolesSeeder extends Seeder
             $newUser->syncRoles($user['roles']);
 
             // Push user to console table
-            array_push($content, [$user['firstname'], $user['email'], $user['password'], implode('|', $user['roles']), $action]);
+            array_push($content, [$user['firstname'],$user['email'], $user['password'], implode('|', $user['roles']), $action]);
         }
 
         $this->command->table($headers, $content);
