@@ -28,7 +28,7 @@ class RolesSeeder extends Seeder
         $this->command->comment("<comment>+----------------+</comment>");
         $this->command->comment("| Creating Users |");
         $this->command->comment("<comment>+----------------+</comment>");
-        $headers = ['firstname', 'email', 'password', 'role'];
+        $headers = ['firstname','lastname', 'email', 'password', 'role'];
 
         $content = [];
 
@@ -39,7 +39,8 @@ class RolesSeeder extends Seeder
                     'email' => $user['email']
                 ],
                 [
-                    'firstname' => 'saugat pandey',
+                    'firstname' => $user['firstname'],
+                    // 'lastname' => 'pandey',
                     'password' => bcrypt('password'),
                     'remember_token' => Str::random(10),
                     'unique_identification_number' =>Helper::IDGenereator(new User, 'unique_identification_number',5,'72815'),
