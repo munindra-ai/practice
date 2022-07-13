@@ -3,7 +3,7 @@ return [
     /*
     * The roles required by the application
     */
-    'roles' => [
+    'role_group' => [
         'super-admin',
         'admin',
         'customer',
@@ -14,19 +14,19 @@ return [
     */
     'users' => [
         [
-            'name' => 'James Bhatta',
-            'email' => 'jmsbhatta@gmail.com',
+            'firstname' => 'saugat pandey',
+            'email' => 'saugat@gmail.com',
             'password' => 'password',
             'roles' => ['super-admin']
         ],
         [
-            'name' => 'Admin',
+            'firstname' => 'Admin',
             'email' => 'admin@makalu.com',
             'password' => 'password',
             'roles' => ['admin']
         ],
         [
-            'name' => 'John Doe',
+            'firstname' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'password',
             'roles' => ['customer']

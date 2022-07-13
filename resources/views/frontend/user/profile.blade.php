@@ -15,9 +15,7 @@
 
          <div class="card">
             <div class="card-body">
-                <!-- {!! QrCode::size(300)->generate($data) !!} -->
-                <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(600)->generate($data)) !!} ">
-                
+                {!! QrCode::size(300)->generate($data) !!} 
             </div>
         </div> 
         <div>

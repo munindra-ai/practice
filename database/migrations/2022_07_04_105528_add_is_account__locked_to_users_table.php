@@ -14,7 +14,7 @@ class AddIsAccountLockedToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_account_Locked')->nullable()->default(1);
+            $table->boolean('is_account_locked')->nullable()->default(1);
         });
     }
 
@@ -26,7 +26,7 @@ class AddIsAccountLockedToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_account_Locked');
+            $table->dropColumn('is_account_locked');
         });
     }
 }
