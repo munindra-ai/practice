@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\PDF;
 
 class InvoiceController extends Controller
 {

@@ -1,5 +1,25 @@
+
 <div>
-    @if($profileUpdated)
+    <div>
+        <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
+        <form enctype="multipart/form-data" action="/profile" method="POST">
+            <label>Select Image: </label>
+            <input type="file" name="avatar">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
+        <x-tailwind-invalid-feedback field="user.profile" /> -->
+            <input type="submit" class="pull-right btn btn-sm btn-primary" value="upload">
+    </div>
+    </form>
+    @if(Session::has('message'))
+    <div class="bg-green-100 border border-green-400 text-green-700 text-sm p-2 rounded mb-4 success alert-success" role="success">
+        <span class="block sm:inline">{{ session()->get('message') }}</span>
+        
+
+    </div>
+    @endif
+
+    {{-- @if($profileUpdated)
     <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
         <div class="flex">
             <div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -10,7 +30,7 @@
             </div>
         </div>
     </div>
-    @endif
+    @endif --}}
     <form wire:submit.prevent="updateProfile">
         <div>
             <label class="block mb-2">Name</label>
@@ -49,3 +69,6 @@
         </div>
     </form>
 </div>
+      <div class="align-self-center ml-auto">
+        <a href="{{ route('PrintPDF', $user->id) }}" class="btn btn-light my-0 border font-poppins text-capitalize" target="_blank">Print PDF</a>
+    </div>
