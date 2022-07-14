@@ -991,7 +991,7 @@ video {
 .aspect-w-15 > *,
 .aspect-w-16 > *{
   position: absolute;
-  height: 100%;
+  height: 32rem;
   width: 100%;
   top: 0;
   right: 0;
@@ -1076,6 +1076,7 @@ video {
 
 .aspect-w-16{
   --tw-aspect-w: 16;
+  
 }
 
 .aspect-h-1{

@@ -1,8 +1,13 @@
 <!-- Brand Logo -->
 <a href="{{ route('home') }}" class="brand-link text-center" target="_blank">
-    <img src="{{ siteLogoUrl() }}" alt="{{ config('app.name') }}" class="" style="opacity: .8; height: 2rem;"> {{-- <span class="brand-text font-weight-light">{{ config('app.name') }}</span> --}}
+    <img src="/images/GBHO-logo.png" alt="{{ config('app.name') }}" class="" style="opacity: .8; height: 5rem;"> {{-- <span class="brand-text font-weight-light">{{ config('app.name') }}</span> --}}
 </a>
-
+<!-- <style>
+    img{
+        width: 30%;
+        height: 30%;
+    }
+</style> -->
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user (optional) -->

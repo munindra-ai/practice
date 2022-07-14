@@ -33,9 +33,12 @@ fieldset {
     padding: 24px 16px;
     font-weight: 700;
     font-size: 1.125rem;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     cursor: pointer;
     transition: .2s;
+}
+.radio-label:hover{
+    border: 2px solid #905e31;
 }
 form label {
     display: block;
@@ -71,7 +74,7 @@ button, input{
     position: relative;
 }
 .amount:before {
-    content: '$';
+    content: '';
     position: absolute;
     left: 15px;
     top: 12px;
@@ -90,7 +93,9 @@ button, input{
     clip-path: inset(50%);
     word-wrap: normal!important;
 }
-
+label .amount-label {
+    padding-left: 5px;
+}
 .amount-input {
     padding-left: 35px;
     height: 70px;
@@ -99,7 +104,7 @@ button, input{
 
 form input[type=text]{
     display: block;
-    padding: 0 15px;
+    padding: 0 30px;
     width: 100%;
     height: 50px;
     line-height: 1.2;
@@ -134,8 +139,8 @@ form input[type=text]{
     text-decoration: none!important;
     text-transform: uppercase;
     color: #fff;
-    background: #646fd4;
-    border: 2px solid #646fd4;
+    background: #ea7605;
+    border: 3px solid #905e31;
     border-radius: 0;
     box-shadow: none;
     -webkit-appearance: none;
@@ -145,7 +150,7 @@ form input[type=text]{
     transition: .2s;
 }
 .form-submit:hover{
-    background: #4cacbc;
+    background: #905e31;
 }
 
 .frequency-group {
@@ -167,9 +172,98 @@ form input[type=text]{
 form{
     margin-top: 2rem;
 }
+section .container:hover {
+    box-shadow: none;
+}
+#desktop-footer {
+    margin-top: 15rem;
+}
+
+h1 { 
+    font-size: 4rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    
+}
+h2{
+    font-size: 24px;
+}
+h3{ 
+    margin-top: 10px;
+    text-align: initial;
+    font-weight: 400;
+}
+.contact{
+    margin-top: 1rem;
+}
+h4{
+    font-size: 18px;
+    font-weight: 500;
+}
 </style>
-<div class="container">
-<form action="" class="donate-form visible" id="">
+<div class="container py-5">
+        <section class="mb-4">
+            <div class="flex items-center mb-4 sm:mb-6">
+                <h2 class="tracking-wide text-lg"></h2>
+                {{-- <h2 class="tracking-wide bg-main-40 bg-gradient-to-r from-main-500 rounded-sm via-blue-500 to-main-400 py-2 px-4 lg:px-8 text-white"></h2> --}}
+                <a class="ml-auto text-sm text-red-600 font-semibold hover:underline" href="{{ route('frontend.products.by-group', 'top') }}"></a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                
+            
+            <section>
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                        <section>
+                            <h1>Donate Us</h1>
+                            <h2>Thank you for considering generous donations to the Global Bhutanese Hindu Organization.</h2>
+                            <h3>Your donation today strengthens our mission to preserve and promote our Hindu religion, philosophy, culture, language and heritage without discrimination based on caste, sex, age, and sampradaya.</h3>
+                            <h3>With your support, GBHO can advance programs and carry forward our goal to provide resources and services in every home in our community. </h3>
+                            <h3>To lift the courage and expand the organization’s faithful presence, make a donation today by clicking on the DONATE button.</h3>
+                            <div class="contact">
+                            <h2>You can also donate by mail:</h2>
+                            <h4>Check: Pay to The Order of GBHO <br>
+                                Mr. Toya Acharya <br>
+                                199 Monarch Dr. <br>
+                                Pataskala, OH 43062</h4>
+                            </div>
+                            <h3>If you have witnessed and appreciated the work of GBHO and ongoing programs, we welcome your partnership and sponsorship of our programs as well. Contact GBHO for more information.</h3>
+                            <h3>Please be assured that the donation made to GBHO using any method is very safe and confidential. </h3>
+                        </section>
+
+
+
+                    </div>
+                </div>
+                </section>
+
+                
+            <section>
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                    <form class="donate-form-choose">
+			<fieldset class="radio-group">
+								<label for="block_5fa57a381d883-form-1" class="radio-label donate-form-choose-label">
+					<input id="block_5fa57a381d883-form-1" type="radio" name="givegroup" class="radio-input donate-form-choose-option" value="giveNeeded">
+					Give where the need is greatest
+				</label>
+								<label for="block_5fa57a381d883-form-2" class="radio-label donate-form-choose-label">
+					<input id="block_5fa57a381d883-form-2" type="radio" name="givegroup" class="radio-input donate-form-choose-option" value="giveUSA">
+					Give to empower young leaders in the U.S.
+				</label>
+								<label for="block_5fa57a381d883-form-3" class="radio-label donate-form-choose-label active-radio">
+					<input id="block_5fa57a381d883-form-3" type="radio" name="givegroup" class="radio-input donate-form-choose-option" value="giveIntl">
+					Give to build schools in developing countries
+				</label>
+							</fieldset>
+		</form>
+
+
+
+
+                    <form action="" class="donate-form visible" id="">
 
 <input type="hidden" id="stayclassyId" name="eid" value="34534">
 
@@ -191,8 +285,8 @@ form{
                 </fieldset>
 
 <fieldset class="amount">
-    <label for="giveNeeded-amount" class="amount-label">Enter Other Amount</label>
-    <input id="giveNeeded-amount" class="amount-input" type="text" name="amount" placeholder="Enter Other Amount">
+    <label for="giveNeeded-amount" class="amount-label"></label>
+    <input id="giveNeeded-amount" class="amount-input" type="text" name="amount" placeholder="$ Enter Other Amount">
 </fieldset>
 
 <h3 class="form-header">Frequency:</h3>
@@ -211,6 +305,20 @@ form{
 </button>
 
 </form>
+                    </div>
+                </div>
+                </section>
+
+                               
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<div class="container">
+
 </div>
 
 

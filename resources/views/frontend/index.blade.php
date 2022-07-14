@@ -7,14 +7,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/counterup2/2.0.2/index.min.js"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 <div >
     <div class="block">
         <x-primary-image-slider />
     </div>
 
     <div class="my-5"></div>
-    
-    
+
 
     <div class="container py-5">
         <section class="mb-4">
@@ -37,6 +38,16 @@
                             <div class="text-center">
                             <h5 class="card-title">Mission</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <div class="popup" id="popup-1">
+                            <div class="overlay"></div>
+                            <div class="content">
+                                <div class="close-btn" onclick="togglePopup(1)">&times;</div>
+                                <h1>Mission</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aspernatur laborum rem sed laudantium excepturi veritatis voluptatum architecto, dolore quaerat totam officiis nisi animi accusantium alias inventore nulla atque debitis.</p>
+                            </div>
+                            </div>
+                            <button class="more-btn" onclick="togglePopup(1)"><a>Learn More <i class="fa-solid fa-arrow-right"></i></a></button>
+                            
                             </div>
                         </div>
                         </div>
@@ -44,6 +55,7 @@
                     </div>
                 </div>
                 </section>
+               
                 
                 <section>
                 <div class="container py-5">
@@ -57,6 +69,16 @@
                             <div class="text-center">
                             <h5 class="card-title">Vision</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <!-- <button><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button>  -->
+                            <div class="popup" id="popup-2">
+                            <div class="overlay"></div>
+                            <div class="content">
+                                <div class="close-btn" onclick="togglePopup(2)">&times;</div>
+                                <h1>Vision</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aspernatur laborum rem sed laudantium excepturi veritatis voluptatum architecto, dolore quaerat totam officiis nisi animi accusantium alias inventore nulla atque debitis.</p>
+                            </div>
+                            </div>
+                            <button class="more-btn" onclick="togglePopup(2)"><a>Learn More <i class="fa-solid fa-arrow-right"></i></a></button>
                             </div>
                             <div>
                         </div>
@@ -78,6 +100,16 @@
                             <div class="text-center">
                             <h5 class="card-title">Core Value</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <!-- <button><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button>  -->
+                            <div class="popup" id="popup-3">
+                            <div class="overlay"></div>
+                            <div class="content">
+                                <div class="close-btn" onclick="togglePopup(3)">&times;</div>
+                                <h1>Core Value</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aspernatur laborum rem sed laudantium excepturi veritatis voluptatum architecto, dolore quaerat totam officiis nisi animi accusantium alias inventore nulla atque debitis.</p>
+                            </div>
+                            </div>
+                            <button class="more-btn" onclick="togglePopup(3)"><a>Learn More <i class="fa-solid fa-arrow-right"></i></a></button>
                             </div>
                             <div>
                         </div>
@@ -114,6 +146,7 @@
                             <div class="text-center">
                             <h5 class="card-title">Current Event</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button> 
                             </div>
                         </div>
                         </div>
@@ -128,12 +161,13 @@
                     <div class="col-md-8 col-lg-6 col-xl-4">
                         <div class="card text-black">
                         
-                        <img src="" 
+                        <img src="/images/upcomingevent.jpg" 
                             class="card-img-top" alt="Upcoming event" />
                         <div class="card-body">
                             <div class="text-center">
-                            <h5 class="card-title">Upcoming event</h5>
+                            <h5 class="card-title">Upcoming Events</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button> 
                             </div>
                             <div>
                         </div>
@@ -155,6 +189,7 @@
                             <div class="text-center">
                             <h5 class="card-title">Blog Post</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button> 
                             </div>
                             <div>
                         </div>
@@ -190,6 +225,7 @@
                             <div class="text-center">
                             <h5 class="card-title">News</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button> 
                             </div>
                             <div>
                         </div>
@@ -211,7 +247,7 @@
                             <div class="text-center">
                             <h5 class="card-title">Newsletter</h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
-
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button>
                             <!-- <button class="btn">
                                 <a href="#">Submit</a>
                             </button>  -->
@@ -249,6 +285,8 @@
                             <div class="text-center">
                             <h5 class="card-title">Advertisement </h5>
                             <p class="text-muted mb-4">Lorem ipsum dolor sit amet.</p>
+                            <button class="more-btn"><a  href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></button>
+                           
                             </div>
                             <div>
                         </div>
@@ -399,7 +437,7 @@
                     <div class="box">
                         <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
                         <div class="title">Educate</div>
-                        <div class="para">Your generosity through sponsorship can change children's lives by providing 
+                        <div class="para-feature">Your generosity through sponsorship can change children's lives by providing 
                             them with food, education, medical care & opportunity.
                         </div>
                         <div class="button"><button>Educate</button></div>
@@ -414,7 +452,7 @@
                     <div class="box">
                         <div class="icon"><i class="fa-solid fa-apple-whole"></i></div>
                         <div class="title">Feed</div>
-                        <div class="para">Every person knows hunger. We have the opportunity to alleviate suffering for someone
+                        <div class="para-feature">Every person knows hunger. We have the opportunity to alleviate suffering for someone
                             every time you give.
                         </div>
                         <div class="button"><button>Feed</button></div>
@@ -429,7 +467,7 @@
                     <div class="box">
                         <div class="icon"><i class="fa-solid fa-om"></i></div>
                         <div class="title">Spread</div>
-                        <div class="para">Provide hope by sending upstream guru to spread the 
+                        <div class="para-feature">Provide hope by sending upstream guru to spread the 
                             gospel of Ram krishna throughout world.
                         </div>
                         <div class="button"><button>Feed</button></div>
@@ -444,7 +482,7 @@
                     <div class="box">
                         <div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
                         <div class="title">Give</div>
-                        <div class="para">Every single cent counts,and your generosity matters. 
+                        <div class="para-feature">Every single cent counts,and your generosity matters. 
                             Each donation we receive enables us to keep helping people who help people.  
                         </div>
                         <div class="button"><button>Give</button></div>
