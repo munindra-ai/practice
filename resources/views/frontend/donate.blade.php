@@ -37,9 +37,18 @@ fieldset {
     cursor: pointer;
     transition: .2s;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 .radio-label:hover{
     border: 2px solid #905e31;
 }
+>>>>>>> feature/aboutusPageFrontend
+=======
+.radio-label:hover{
+    border: 2px solid #905e31;
+}
+>>>>>>> 5722559b1617e3a40f05caaedba8b8792835afd1
 form label {
     display: block;
     margin: 0 0 10px;
