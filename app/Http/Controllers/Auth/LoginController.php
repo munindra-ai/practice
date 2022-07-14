@@ -19,6 +19,8 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    public $maxAttempts = 3;
+    public $decayMinutes = 180;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -141,7 +143,7 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed'), trans('auth.attempts'), trans('auth.attempts1')],
             'attempts' => 'Attempt ' . $this->limiter()->attempts($this->throttleKey($request)),
-            'attempts1' => 'remaining attempt ' . (int)3 - $this->limiter()->attempts($this->throttleKey($request)),
+            'attempts1' => 'remaining attempt ' . (int)4 - $this->limiter()->attempts($this->throttleKey($request)),
         ])->redirectTo('/login');
     }
     protected function authenticated(Request $request, $user)
