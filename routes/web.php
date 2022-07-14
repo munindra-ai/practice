@@ -7,7 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentRegisterController;
 use App\Mail\LoginAlert;
@@ -48,6 +48,7 @@ Route::get('profile', 'UserController@profile')->name('user.profile');
 Route::put('profile/update/{user}', 'UserController@updateProfile')->name('user.profile.update');
 Route::post('upload','UserController@store');
 Route::post('profile','UserController@update_avatar');
+Route::get('/PrintPDF/{id}',[UserController::class, 'PrintPDF'])->name('PrintPDF');
 
 // Product routes
 Route::get('products', 'ProductController@index')->name('frontend.products.index');

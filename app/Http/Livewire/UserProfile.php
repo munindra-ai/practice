@@ -17,7 +17,6 @@ class UserProfile extends Component
         'user.name' => 'required',
         'user.mobile' => 'required|min:10',
         'user.gender' => 'required',
-        'avatar'=>'required',
     ];
 
     public function mount(User $user)

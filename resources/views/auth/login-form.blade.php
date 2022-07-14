@@ -37,7 +37,7 @@
         @error('email')
         <p class="text-red-500 text-xs mt-2">
             <strong>{{ $message }} </strong>
-            <!-- <strong>ATTEMPT {{ $errors->first('attempts') }} remaining {{3 - (int)$errors->first('attempts') }}</strong> -->
+            <!-- <strong>ATTEMPT {{ $errors->first('attempts') }} remaining {{4 - (int)$errors->first('attempts') }}</strong> -->
             <strong> {{ $errors->first('attempts')}} </strong>
             <strong>{{ $errors->first('attempts1')}} </strong>
             <!-- <strong> {{3 - (int)$errors->first('attempts') }} </strong> -->

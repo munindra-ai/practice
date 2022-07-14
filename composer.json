@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.1|^7.3|^8.1.6",
         "artesaos/seotools": "^0.20.1",
-        "barryvdh/laravel-dompdf": "^0.8.7",
+        "barryvdh/laravel-dompdf": "^1.0",
         "biscolab/laravel-recaptcha": "^4.4.0",
         "bumbummen99/shoppingcart": "^4.0",
         "consoletvs/charts": "7.*",

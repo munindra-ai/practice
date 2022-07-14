@@ -171,6 +171,7 @@ return [
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -185,6 +186,7 @@ return [
         App\Providers\ChartServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
