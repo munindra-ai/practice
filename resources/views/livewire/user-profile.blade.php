@@ -8,9 +8,8 @@
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
         <x-tailwind-invalid-feedback field="user.profile" /> -->
-            <input type="submit" class="pull-right btn btn-sm btn-primary" value="upload">
     </div>
-    </form>
+    
     @if(Session::has('message'))
     <div class="bg-green-100 border border-green-400 text-green-700 text-sm p-2 rounded mb-4 success alert-success" role="success">
         <span class="block sm:inline">{{ session()->get('message') }}</span>
@@ -68,7 +67,7 @@
             <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white text-lg py-2 px-5 rounded my-3 hover:shadow focus:outline-none focus:shadow-outline">Save</button>
         </div>
     </form>
-</div>
-      <div class="align-self-center ml-auto">
+    <div class="align-self-center ml-auto">
         <a href="{{ route('PrintPDF', $user->id) }}" class="btn btn-light my-0 border font-poppins text-capitalize" target="_blank">Print PDF</a>
     </div>
+</div>
