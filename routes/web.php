@@ -23,6 +23,11 @@ Route::get('donate',function(){
 return view('frontend.donate');
 })->name('donate');
 
+Route::get('about',function(){
+    return view('frontend.about');
+    })->name('about');
+    
+
 Route::get('/', 'FrontendController@index')->name('home');
 
 Auth::routes(['verify' => true]);

@@ -22,7 +22,16 @@
 
             <div classs="ml-auto">
                 <ul class="flex items-center space-x-3">
-                   
+                   <style>
+                    
+                    li a.hover{
+                        color: #fff;
+                    }
+                    li a.hover:hover{
+                        color: #fff;
+                        background-color: #905e31;
+                    }
+                   </style>
 
                     
                     <li>
