@@ -178,3 +178,16 @@ function ageCalculator() {
 }
 
 // Register form script end
+
+
+
+// Donate Us Script start
+
+
+
+
+// popup model
+
+function togglePopup(n) {
+  document.getElementById("popup-" + n).classList.toggle("active");
+}

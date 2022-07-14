@@ -59,11 +59,12 @@
                 <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{ route('frontend.blogs.index') }}">Event</a>
             </li>
             <li class="px-5">
-                <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{ route('frontend.pages.show', 'about-us') }}">Contact Us</a>
+                <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{route('about')}}">About Us</a>
             </li>
             <li class="px-5">
-                <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{ route('frontend.contact-form.index') }}">About Us</a>
+                <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{ route('frontend.contact-form.index') }}">Contact Us</a>
             </li>
+           
             <li class="px-5">
                 <a class="inline-block py-2 px-3 hover:text-primary border-b border-transparent hover:border-theme-red " href="{{ route('frontend.contact-form.index') }}">Membership</a>
             </li>
