@@ -141,10 +141,12 @@ class LoginController extends Controller
         $attempts = session()->get('login.attempts', 0); // get attempts, default: 0
         session()->put('login.attempts', $attempts + 1); // increase attempts
         throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed'), trans('auth.attempts'), trans('auth.attempts1')],
-            'attempts' => 'Attempt ' . $this->limiter()->attempts($this->throttleKey($request)),
-            'attempts1' => 'remaining attempt ' . (int)4 - $this->limiter()->attempts($this->throttleKey($request)),
-        ])->redirectTo('/login');
+            // $this->username() => [trans('auth.failed')], --send failed login message
+            // 'attempts' => 'Attempt ' . $this->limiter()->attempts($this->throttleKey($request)),-- Attempts count
+            $attempts1 = 'Remaining attempt ' . (int)4 - $this->limiter()->attempts($this->throttleKey($request)),
+            session()->flash('errorAlert','Wrong Password !! '. $attempts1),
+        ]);
+        return redirect('/login');
     }
     protected function authenticated(Request $request, $user)
     {

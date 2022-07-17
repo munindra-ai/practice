@@ -5,6 +5,11 @@
 
 <form method="POST" action="{{ route('login') }}" class="text-gray-700">
     @csrf
+    @if(Session::has('errorAlert'))
+    <script>
+        showAlert('danger', "{{ Session::get('errorAlert') }}");
+    </script>
+@endif
 
     @if(Session::has('unknown'))
     <div class="bg-red-100 border border-red-400 text-red-700 text-sm p-2 rounded mb-4" role="alert">
@@ -31,7 +36,7 @@
         @if($errors->login->has('email'))
         <p class="text-red-500 text-xs mt-2">
             {{ $errors->login->first('email') }}
-            <!-- <strong>{{ $errors->first('attempts') }}</strong> -->
+            {{-- {{ $errors->first('attempts') }} --}}
         </p>
         @endif
         @error('email')

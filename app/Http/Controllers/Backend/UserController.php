@@ -39,16 +39,18 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'mobile' => 'nullable',
             'gender' => 'nullable',
             'roles' => 'required'
         ]);
 
-        $user->name = $request->name;
+        $user->firstname = $request->name;
+        $user->lastname = $request->name;
         $user->email = $request->email;
-        $user->mobile = $request->mobile;
+        $user->phone = $request->mobile;
         $user->gender = $request->gender;
         if ($request->has('password')) {
             $user->password = bcrypt($request->password);

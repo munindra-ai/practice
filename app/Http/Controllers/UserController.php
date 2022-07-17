@@ -40,36 +40,33 @@ class UserController extends Controller
 			$authUser->update();
 			return back()->with('error', 'Permission denied.');
 		}
-		// if ($request->hasfile('avatar')){
-
-		// 	$avatar=$request->file('avatar');
-		// 	$name= time().'.'.$avatar->getClientOriginalExtension();
-		// 	$filename='/avatars/'.$name;
-		// 	Image::make($avatar)->resize(300,300)->store('slider_images', 'sliders');
-		// 	// save(public_path('/uploads/'.$filename));
-		// 	$user=Auth::user();
-		// 	$user->avatar= $filename;
-		// }
-		// $user->save();
 
 		$request->validate(
 			[
-				'name' => 'required',
-				'mobile' => 'required',
+				'firstname' => 'required',
+				'lastname' => 'required',
+				'phone' => 'required',
 				'email' => 'required|email|max:255|exists:users',
+				'avatar'=>'required',
 
 			]
 		);
-		$user->name = $request->name;
-		$user->mobile = $request->mobile;
+		$user->firstname = $request->name;
+		$user->lastname = $request->name;
+		$user->phone = $request->mobile;
 		$user->address = $request->address;
 		$user->gender = $request->gender;
+		// $user->avatar =$request->avatar;
+		
+
+
+        session()->flash('message', 'Image has been successfully Uploaded.');
 		$user->update();
-
-		session()->flash('successAlert', 'Logged in successfully !!');
-		return back();
-
-		// return back()->with('successAlert', 'Profile updated successfully.');
+		// Auth::user()->update($validatedData);
+		return view('frontend.user.profile', compact([
+			'user',
+			'heading'
+		]));
 
 
 
@@ -88,6 +85,7 @@ class UserController extends Controller
 			$user = Auth::user();
 			$user->avatar = $filename;
 		}
+		
 
 		$user->save();
 

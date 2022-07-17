@@ -141,10 +141,11 @@
 	<div class="id-card-holder">
 		<div class="id-card">
 			<div class="photo">
-				<img src="{{public_path("/uploads".$user->avatar) }}">
+				<img src="{{public_path("storage/".$user->avatar) }}">
 			</div>
-			<h2>{{$user->name}}</h2>
+			<h2>{{$user->firstname}}</h2>
 			<h3>{{$user->email}}</h3>
+            <h4>{{$user->dob}}</h4>
 			<hr>
 
 			{{-- <p><strong>"PENGG"</strong>HOUSE,4th Floor, TC 11/729(4), Division Office Road <p>

@@ -1,14 +1,16 @@
-
 <div>
-    <div>
+    {{-- <div>
         <img src="/uploads{{$user->avatar }}" alt="" style="max-height: 300px;">
-        <form enctype="multipart/form-data" action="/profile" method="POST">
+        <form enctype="multipart/form-data"  action="/profile" method="POST">
             <label>Select Image: </label>
             <input type="file" name="avatar">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <!-- <input wire:model="user.profile" type="file" class="form-input w-full @error('user.profile')  border-red-500 @enderror" name="avatar">
-        <x-tailwind-invalid-feedback field="user.profile" /> -->
-    </div>
+            <div>
+                <button type="submit"  class="bg-gray-800 hover:bg-gray-900 text-white text-lg py-2 px-5 rounded my-3 hover:shadow focus:outline-none focus:shadow-outline">Save</button>
+            </div>
+        </form>
+    </div> --}}
+
     
     @if(Session::has('message'))
     <div class="bg-green-100 border border-green-400 text-green-700 text-sm p-2 rounded mb-4 success alert-success" role="success">
@@ -18,23 +20,34 @@
     </div>
     @endif
 
-    {{-- @if($profileUpdated)
-    <div wire:click="$set('profileUpdated', false)" class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 mb-3 shadow cursor-pointer" role="alert">
-        <div class="flex">
-            <div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
-            <div>
-                <p class="font-bold">Your profile has been updated</p>
-                <p class="text-sm">Make sure you know how these changes affect you.</p>
-            </div>
-        </div>
-    </div>
-    @endif --}}
-    <form wire:submit.prevent="updateProfile">
+    <form wire:submit.prevent="updateProfile" enctype="multipart/form-data" method="POST">
         <div>
-            <label class="block mb-2">Name</label>
-            <input wire:model="user.name" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">
+            @if(Session::has('successAlert'))
+            <script>
+                showAlert('success', "{{ Session::get('successAlert') }}");
+            </script>
+            @endif
+        </div>
+        <div>
+            @if($avatar)
+            <img src="{{ $avatar->temporaryUrl() }}">
+            @endif
+            {{-- <img src="storage/{{$user->avatar}}" alt=""> --}}
+            
+            <input type="file" name="avatar" wire:model="avatar" class="form-input w-full @error('avatar')  border-red-500 @enderror" >
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <x-tailwind-invalid-feedback field="avatar" />
+
+        </div>
+        <div> 
+            <label class="block mb-2">First Name</label>
+            <input wire:model="user.firstname" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">
             <x-tailwind-invalid-feedback field="user.name" />
+        </div>
+        <div>
+            <label class="block mb-2">Last Name</label>
+            <input wire:model="user.lastname" type="text" class="form-input w-full @error('user.name')  border-red-500 @enderror">
+            <x-tailwind-invalid-feedback field="user.lastname" />
         </div>
         <div class="my-3">
             <label class="block mb-2">Email</label>
@@ -42,8 +55,8 @@
         </div>
         <div class="my-3">
             <label class="block mb-2">Mobile</label>
-            <input wire:model="user.mobile" type="text" class="form-input w-full @error('user.mobile')  border-red-500 @enderror">
-            <x-tailwind-invalid-feedback field="user.mobile" />
+            <input wire:model="user.phone" type="text" class="form-input w-full @error('user.phone')  border-red-500 @enderror">
+            <x-tailwind-invalid-feedback field="user.phone" />
         </div>
         <div class="my-3">
             <label class="block mb-2">Gender</label>

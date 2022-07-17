@@ -8,7 +8,7 @@
     </x-slot>
         
    <?php 
-   $name = $user->name;
+   $name = $user->firstname;
    $dob = $user->dob;
    $data = 'name : ' . $name .' '. ' age : ' . $dob ;
    ?>
