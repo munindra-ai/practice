@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Backend\BookCategory\Index;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', 'DashboardController@index')->name('backend.dashboard');
@@ -12,6 +13,10 @@ Route::resources([
 Route::get('products/{product}/images', 'ProductController@images')->name('products.images');
 Route::get('products/{product}/seo', 'ProductController@seo')->name('products.seo');
 Route::post('products/{product}/seo', 'ProductController@storeSeo')->name('products.seo.store');
+
+//Book categories routes
+Route::get('Bookcategories',[Index::class,'render']);
+
 
 // Categories Route
 Route::get('categories', 'CategoryController@index')->name('categories.index');

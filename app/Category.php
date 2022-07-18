@@ -27,7 +27,7 @@ class Category extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom('firstname')
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
     }

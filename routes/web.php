@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMarkDownMail;
 use App\Http\Controllers\SideMenuController;
+use App\Http\Controllers\BookCategories;
+use App\Http\Controllers\BookCategoriesController;
 
 Route::get('donate',function(){
 return view('frontend.donate');
@@ -54,6 +56,9 @@ Route::get('/PrintPDF/{id}',[UserController::class, 'PrintPDF'])->name('PrintPDF
 Route::get('products', 'ProductController@index')->name('frontend.products.index');
 Route::get('p/{tag}', 'ProductController@byGroup')->name('frontend.products.by-group');
 Route::get('products/{product}', 'ProductController@show')->name('frontend.products.show');
+
+//Book categories routes
+Route::get('Bookcategories',[BookCategoriesController::class,'index']);
 
 // Passworc change routes
 Route::get('change-password', 'PasswordController@index')->name('frontend.password.index');
