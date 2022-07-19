@@ -51,6 +51,6 @@
             showAlert(type, message);
         });
     </script>
-
+{{-- @stack('scripts') --}}
 </body>
 </html>

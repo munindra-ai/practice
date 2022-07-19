@@ -21,6 +21,7 @@ use App\Mail\SendMarkDownMail;
 use App\Http\Controllers\SideMenuController;
 use App\Http\Controllers\BookCategories;
 use App\Http\Controllers\BookCategoriesController;
+use App\Http\Livewire\Backend\BookCategory\Index;
 
 Route::get('donate',function(){
 return view('frontend.donate');
@@ -58,7 +59,7 @@ Route::get('p/{tag}', 'ProductController@byGroup')->name('frontend.products.by-g
 Route::get('products/{product}', 'ProductController@show')->name('frontend.products.show');
 
 //Book categories routes
-Route::get('Bookcategories',[BookCategoriesController::class,'index']);
+// Route::get('Bookcategories',Index::class);
 
 // Passworc change routes
 Route::get('change-password', 'PasswordController@index')->name('frontend.password.index');

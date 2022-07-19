@@ -15,7 +15,7 @@ Route::get('products/{product}/seo', 'ProductController@seo')->name('products.se
 Route::post('products/{product}/seo', 'ProductController@storeSeo')->name('products.seo.store');
 
 //Book categories routes
-Route::get('Bookcategories',[Index::class,'render']);
+Route::get('Bookcategories',[App\Http\Controllers\BooksController::class,'index']);
 
 
 // Categories Route
